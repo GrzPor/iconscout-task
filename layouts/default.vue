@@ -1,18 +1,14 @@
 <template>
-    <div>
-        <header>
-            <h1>Header</h1>
-        </header>
-        <main>
-            <slot />
-        </main>
-    </div>
+  <div>
+    <header>
+      <h1>Header</h1>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>
