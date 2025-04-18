@@ -1,0 +1,112 @@
+$base-size: 1rem;
+
+// Font family variables
+$font-karla-regular: 'Karla Regular', sans-serif;
+$font-karla-extralight-italic: 'Karla ExtraLight Italic', sans-serif;
+$font-averta-regular: 'Averta Regular', sans-serif;
+$font-averta-semibold: 'Averta Semibold', sans-serif;
+$font-averta-bold: 'Averta Bold', sans-serif;
+
+// Bootstrap 5 font size variables
+$font-size-base: 1rem; // By default this is 16px
+$font-size-sm: 0.875rem; // 14px in rem
+$font-size-xs: 0.75rem; // 12px in rem
+$line-height-sm: 1.5; // Appropriate line height for small text
+$line-height-xs: 1.4; // Appropriate line height for small text
+
+// Override Bootstrap variables
+$primary: #0092e4;
+$primary-dark: #0058e3;
+$gray-100: #fafafc;
+$gray-200: #ebedf5;
+$gray-300: #d8dbeb;
+
+$navy-100: #424866;
+$navy-200: #2e334c;
+$navy-300: #1c2033;
+
+// Spacing variables
+$size-3: 0.75rem;
+
+// Bootstrap component theme colors override
+$theme-colors: (
+  'primary': $primary,
+  'primary-dark': $primary-dark,
+  'gray-100': $gray-100,
+  'gray-200': $gray-200,
+  'gray-300': $gray-300
+);
+
+// Font size utility classes
+.font-size-sm {
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+}
+
+.font-size-xs {
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+}
+
+// Custom margin utility classes
+.m-3-4 {
+  margin: $size-3;
+}
+
+.mt-3-4 {
+  margin-top: $size-3;
+}
+
+.mb-3-4 {
+  margin-bottom: $size-3;
+}
+
+.ms-3-4 {
+  margin-left: $size-3;
+}
+
+.me-3-4 {
+  margin-right: $size-3;
+}
+
+// Padding variants
+.p-3-4 {
+  padding: $size-3;
+}
+
+.pt-3-4 {
+  padding-top: $size-3;
+}
+
+.pb-3-4 {
+  padding-bottom: $size-3;
+}
+
+.ps-3-4 {
+  padding-left: $size-3;
+}
+
+.pe-3-4 {
+  padding-right: $size-3;
+}
+
+// Margin/padding for both axes
+.mx-3-4 {
+  margin-left: $size-3;
+  margin-right: $size-3;
+}
+
+.my-3-4 {
+  margin-top: $size-3;
+  margin-bottom: $size-3;
+}
+
+.px-3-4 {
+  padding-left: $size-3;
+  padding-right: $size-3;
+}
+
+.py-3-4 {
+  padding-top: $size-3;
+  padding-bottom: $size-3;
+}

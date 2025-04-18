@@ -6,9 +6,12 @@
     <main>
       <slot />
     </main>
+    <AppFooter />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AppFooter from '@components/Footer/AppFooter.vue'
+</script>
 
 <style scoped></style>

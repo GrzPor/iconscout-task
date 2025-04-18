@@ -1,0 +1,15 @@
+@use '~/assets/scss/variables' as *;
+
+.nav-list__title {
+  color: $navy-200;
+}
+
+.nav-list__items {
+  a {
+    color: $navy-100;
+    text-decoration: none;
+    &:hover {
+      color: #000;
+    }
+  }
+}

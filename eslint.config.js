@@ -5,6 +5,7 @@ import tsPlugin from '@typescript-eslint/eslint-plugin'
 import vueParser from 'vue-eslint-parser'
 import prettierConfig from 'eslint-config-prettier'
 import prettierPlugin from 'eslint-plugin-prettier'
+import tsParser from '@typescript-eslint/parser'
 
 export default [
   {
@@ -43,6 +44,15 @@ export default [
       parser: vueParser,
       ecmaVersion: 'latest',
       sourceType: 'module',
+      parserOptions: {
+        parser: {
+          ts: '@typescript-eslint/parser'
+        },
+        extraFileExtensions: ['.vue'],
+        ecmaFeatures: {
+          jsx: true
+        }
+      },
       globals: {
         defineProps: 'readonly',
         defineEmits: 'readonly',
@@ -82,6 +92,7 @@ export default [
   {
     files: ['**/*.js', '**/*.ts'],
     languageOptions: {
+      parser: tsParser,
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {

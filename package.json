@@ -10,8 +10,8 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint --ext .js,.ts,.vue .",
     "lint:fix": "eslint --fix --ext .js,.ts,.vue .",
-    "format": "prettier --write \"**/*.{js,ts,vue,json,md}\"",
-    "format:check": "prettier --check \"**/*.{js,ts,vue,json,md}\""
+    "format": "prettier --check \"**/*.{js,ts,vue,json,md,yml}\"",
+    "format:fix": "prettier --write \"**/*.{js,ts,vue,json,md,yml}\""
   },
   "dependencies": {
     "nuxt": "^3.16.2",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "@bootstrap-vue-next/nuxt": "^0.28.6",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@types/node": "^22.14.1",
     "@typescript-eslint/eslint-plugin": "^8.29.1",
     "@typescript-eslint/parser": "^8.29.1",
     "bootstrap": "^5.3.5",
@@ -32,6 +33,8 @@
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-vue": "^10.0.0",
     "prettier": "^3.5.3",
+    "sass": "^1.86.3",
+    "sass-loader": "^16.0.5",
     "vue-eslint-parser": "^10.1.3"
   }
 }
