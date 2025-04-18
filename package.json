@@ -10,8 +10,8 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint --ext .js,.ts,.vue .",
     "lint:fix": "eslint --fix --ext .js,.ts,.vue .",
-    "format": "prettier --check \"**/*.{js,ts,vue,json,md}\"",
-    "format:fix": "prettier --write \"**/*.{js,ts,vue,json,md}\""
+    "format": "prettier --check \"**/*.{js,ts,vue,json,md,yml}\"",
+    "format:fix": "prettier --write \"**/*.{js,ts,vue,json,md,yml}\""
   },
   "dependencies": {
     "nuxt": "^3.16.2",
