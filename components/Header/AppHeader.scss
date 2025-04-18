@@ -1,0 +1,62 @@
+@use '~/assets/scss/variables' as *;
+
+.app-header {
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08);
+
+  &__logo {
+    margin-right: 30px;
+  }
+
+  &__search {
+    background-color: $gray-200;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    display: flex;
+    padding: 10px 8px;
+    margin-right: 30px;
+
+    &:has(.app-header__search-input:focus),
+    &:has(.app-header__search-input:focus-visible) {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__search-dropdown {
+    border-right: 1px solid #b4bad6;
+
+    span {
+      font-family: $font-averta-bold;
+    }
+  }
+
+  &__search-input {
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    margin-right: 0.5rem;
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  &__search-button {
+    align-items: center;
+    background-color: #fafafc;
+    border: none;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    width: 30px;
+  }
+
+  &__nav {
+    font-family: $font-averta-semibold;
+    color: $navy-200;
+
+    a {
+      color: $navy-200;
+      text-decoration: none;
+    }
+  }
+}
