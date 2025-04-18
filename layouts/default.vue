@@ -1,8 +1,6 @@
 <template>
   <div>
-    <header>
-      <h1>Header</h1>
-    </header>
+    <AppHeader />
     <main>
       <slot />
     </main>
@@ -11,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+import AppHeader from '@components/Header/AppHeader.vue'
 import AppFooter from '@components/Footer/AppFooter.vue'
 </script>
 

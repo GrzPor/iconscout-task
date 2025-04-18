@@ -1,0 +1,31 @@
+@use './variables' as *;
+@use 'sass:color';
+
+.btn {
+  padding: 10px 20px;
+}
+
+.btn-primary {
+  background-color: $primary !important;
+  border-color: $primary !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: color.scale($primary, $lightness: -15%) !important;
+  border-color: color.scale($primary, $lightness: -15%) !important;
+}
+
+.btn-outline-secondary {
+  border-color: $gray-300;
+  color: #000;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus,
+.btn-outline-secondary:active {
+  background-color: $gray-300;
+  border-color: $gray-300;
+  color: #000;
+}
