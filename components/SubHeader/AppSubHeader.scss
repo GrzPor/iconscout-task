@@ -1,0 +1,19 @@
+@use '~/assets/scss/variables' as *;
+
+.app-subheader {
+  background-color: $gray-100;
+  padding-inline: 40px;
+
+  h1 {
+    font-family: $font-averta-bold;
+    font-size: 35px;
+    line-height: 1.5;
+    margin-bottom: 4px;
+  }
+
+  p {
+    color: #5a607d;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
