@@ -1,0 +1,16 @@
+@use '~/assets/scss/variables' as *;
+
+.social-list__title {
+  color: $navy-200;
+}
+
+.social-list__items {
+  border: 1px solid $gray-300;
+  li {
+    height: 40px;
+    width: 47px;
+    &:not(:last-child) {
+      border-right: 1px solid $gray-300;
+    }
+  }
+}

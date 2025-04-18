@@ -1,0 +1,23 @@
+@use '~/assets/scss/variables' as *;
+
+.app-footer {
+  background-color: $gray-200;
+  color: $navy-100;
+
+  &__count {
+    color: $primary-dark;
+    font-style: normal;
+  }
+}
+
+.app-copyright {
+  background-color: $gray-300;
+
+  &__content {
+    font-family: $font-karla-regular;
+  }
+
+  &__payments {
+    font-family: $font-karla-extralight-italic;
+  }
+}
