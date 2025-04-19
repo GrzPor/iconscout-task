@@ -1,24 +1,82 @@
 @use '~/assets/scss/variables' as *;
+@use '~/assets/scss/_sidebar' as *;
 
 .app-sidebar {
   border-bottom: 1px solid $gray-200;
   border-right: 1px solid $gray-200;
   width: $sidebar-width;
 
-  &__wrapper {
-    border-top: 1px solid $gray-200;
+  &__category {
+    background-color: #f5f6fa;
+    border-radius: 4px;
+    color: #000;
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    padding: 0.0625rem 0.5rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    &:hover {
+      background-color: $gray-300;
+    }
+  }
+}
+
+.base-toggle {
+  align-items: center;
+  display: flex;
+  height: 59px;
+  justify-content: space-between;
+  position: relative;
+
+  input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + label {
+      &::before {
+        background-color: #24a8af;
+      }
+      &::after {
+        margin-left: calc(100% - 20px);
+      }
+    }
   }
 
-  &__btn {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    min-height: 57px;
-    text-align: left;
-  }
+  label {
+    display: block;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    width: 36px;
+    height: 20px;
 
-  &__label {
-    color: $navy-300;
-    font-family: $font-averta-semibold;
+    &::before {
+      display: block;
+      content: '' !important;
+      width: 36px;
+      height: 20px;
+      background: #b4bad4;
+      border-radius: 15px;
+      border: none;
+      margin: 0;
+      transition: 0.22s background;
+    }
+    &::after {
+      content: '' !important;
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 15px;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      box-shadow: 0 0 8px #8f95b3;
+      background: #fff;
+      transition: 0.22s margin-left;
+    }
   }
 }

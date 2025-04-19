@@ -27,18 +27,31 @@
 </template>
 
 <script setup lang="ts">
-import BaseRadioInput from '@/components/base/BaseRadioInput/BaseRadioInput.vue'
+import BaseRadioInput from '@components/base/BaseRadioInput/BaseRadioInput.vue'
+
+interface SidebarRadioSectionProps {
+  items: {
+    id: string
+    title: string
+    isOpen: boolean
+    options: {
+      name: string
+      value: string
+      label: string
+    }[]
+  }[]
+}
 
 defineProps({
   items: {
-    type: Array,
+    type: Array as () => SidebarRadioSectionProps['items'],
     required: true
   }
 })
 
 const emit = defineEmits(['toggle'])
 
-function toggleSection(index) {
+function toggleSection(index: number) {
   emit('toggle', index)
 }
 </script>

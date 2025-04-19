@@ -1,11 +1,35 @@
 <template>
   <div class="app-sidebar">
     <div class="app-sidebar__wrapper px-4">
-      <BFormCheckbox v-model="exclusiveIcons" switch reverse size="lg">
-        <span class="font-size-sm app-sidebar__label">Iconscout Exclusive</span>
-      </BFormCheckbox>
+      <div class="base-toggle">
+        <span class="font-size-sm app-sidebar__label">IconScout Exclusive</span>
+        <input type="checkbox" id="exclusiveIcons" v-model="exclusiveIcons" />
+        <label for="exclusiveIcons"></label>
+      </div>
     </div>
     <SidebarRadioSection :items="radioSections" @toggle="toggleSection" />
+    <div class="app-sidebar__wrapper px-4">
+      <button
+        @click="isCategoriesOpen = !isCategoriesOpen"
+        aria-controls="collapse-categories`"
+        class="w-100 btn-zero app-sidebar__btn"
+      >
+        <span class="font-size-sm app-sidebar__label"> Categories </span>
+        <img
+          src="@images/icons/angle-up.svg"
+          alt="angle-up"
+          :class="{ 'rotate-180': !isCategoriesOpen }"
+        />
+      </button>
+
+      <BCollapse id="collapse-categories" v-model="isCategoriesOpen">
+        <ul class="list-unstyled d-flex flex-wrap gap-2">
+          <li v-for="(category, index) in categories" :key="index">
+            <a :href="category.url" class="app-sidebar__category">{{ category.name }}</a>
+          </li>
+        </ul>
+      </BCollapse>
+    </div>
   </div>
 </template>
 
@@ -14,7 +38,7 @@ import SidebarRadioSection from './SidebarRadioSection/SidebarRadioSection.vue'
 import { ref } from 'vue'
 
 const exclusiveIcons = ref(false)
-
+const isCategoriesOpen = ref(false)
 const radioSections = ref([
   {
     id: 'asset',
@@ -111,7 +135,21 @@ const radioSections = ref([
   }
 ])
 
-function toggleSection(index) {
+const categories = ref([
+  {
+    name: 'E-commerce & Shopping',
+    url: 'e-commerce-shopping'
+  },
+  {
+    name: 'Deliver',
+    url: 'delivery'
+  },
+  {
+    name: 'Business',
+    url: 'business'
+  }
+])
+function toggleSection(index: number) {
   radioSections.value[index].isOpen = !radioSections.value[index].isOpen
 }
 </script>
