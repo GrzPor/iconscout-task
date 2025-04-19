@@ -1,0 +1,11 @@
+@use '~/assets/scss/variables' as *;
+
+.button-zero {
+  background-color: $gray-100;
+  border: none;
+  border-right: 1px solid $gray-200;
+  color: $navy-200;
+  cursor: pointer;
+  font-family: $font-averta-semibold;
+  width: $sidebar-width;
+}
