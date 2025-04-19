@@ -25,6 +25,9 @@ $navy-100: #424866;
 $navy-200: #2e334c;
 $navy-300: #1c2033;
 
+$blue-100: #2f72bc;
+$blue-200: #3d92de;
+
 // Spacing variables
 $size-3: 0.75rem;
 
@@ -36,6 +39,8 @@ $theme-colors: (
   'gray-200': $gray-200,
   'gray-300': $gray-300
 );
+
+$sidebar-width: 260px;
 
 // Font size utility classes
 .font-size-sm {

@@ -1,0 +1,30 @@
+@use '~/assets/scss/variables' as *;
+
+.category-tabs {
+  background-color: $gray-100;
+  flex-grow: 1;
+  padding-left: 43px;
+
+  a {
+    color: $blue-100;
+    display: block;
+    font-family: $font-averta-semibold;
+    padding-bottom: 12px;
+    text-decoration: none;
+
+    &.router-link-active {
+      color: #000;
+      position: relative;
+
+      &::before {
+        background-color: #000;
+        bottom: 0;
+        content: '';
+        height: 2px;
+        position: absolute;
+        left: 0;
+        width: 100%;
+      }
+    }
+  }
+}
