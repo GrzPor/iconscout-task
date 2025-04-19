@@ -10,7 +10,7 @@
         <SidebarToggle />
         <AppCategoryTabs :tabs="categories" />
       </div>
-      <div>
+      <div class="d-flex">
         <Sidebar />
         <slot />
       </div>
