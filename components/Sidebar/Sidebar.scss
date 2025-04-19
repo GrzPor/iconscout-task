@@ -1,0 +1,24 @@
+@use '~/assets/scss/variables' as *;
+
+.app-sidebar {
+  border-bottom: 1px solid $gray-200;
+  border-right: 1px solid $gray-200;
+  width: $sidebar-width;
+
+  &__wrapper {
+    border-top: 1px solid $gray-200;
+  }
+
+  &__btn {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    min-height: 57px;
+    text-align: left;
+  }
+
+  &__label {
+    color: $navy-300;
+    font-family: $font-averta-semibold;
+  }
+}
