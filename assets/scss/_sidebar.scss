@@ -1,0 +1,20 @@
+@use 'variables' as *;
+
+.app-sidebar {
+  &__wrapper {
+    border-top: 1px solid $gray-200;
+  }
+
+  &__btn {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    min-height: 59px;
+    text-align: left;
+  }
+
+  &__label {
+    color: $navy-300;
+    font-family: $font-averta-semibold;
+  }
+}

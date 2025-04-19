@@ -22,3 +22,14 @@ body {
   line-height: 1.5;
   min-height: 100vh;
 }
+
+.btn-zero {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}

@@ -10,7 +10,10 @@
         <SidebarToggle />
         <AppCategoryTabs :tabs="categories" />
       </div>
-      <slot />
+      <div>
+        <Sidebar />
+        <slot />
+      </div>
     </main>
     <AppFooter />
   </div>
