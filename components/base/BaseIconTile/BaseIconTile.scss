@@ -1,0 +1,45 @@
+@use '~/assets/scss/variables' as *;
+
+.icon-tile {
+  border-radius: 6px;
+  background-color: $gray-100;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+  width: 140px;
+  position: relative;
+  transition: background-color 0.2s ease-in-out;
+  &:hover {
+    background-color: #e1e2e9;
+
+    .icon-tile__buttons {
+      display: flex;
+    }
+  }
+
+  &__image {
+    height: 70px;
+    width: 70px;
+  }
+  &__buttons {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    position: absolute;
+    right: 8px;
+    padding-block: 8px;
+  }
+  &__button {
+    background-color: #f5f6fa;
+    border: 0;
+    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
