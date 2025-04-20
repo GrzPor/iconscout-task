@@ -9,5 +9,10 @@ export default defineNuxtConfig({
     '@assets': '~/assets',
     '@images': '~/assets/images',
     '@layouts': '~/layouts'
+  },
+  runtimeConfig: {
+    public: {
+      iconscoutClientId: process.env.ICONSCOUT_CLIENT_ID || ''
+    }
   }
 })
