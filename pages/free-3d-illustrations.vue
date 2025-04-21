@@ -1,21 +1,25 @@
 <template>
   <div>
-    <div v-if="loading && !data" class="d-flex flex-wrap gap-1">
-      <BaseAssetTileSkeleton v-for="i in perPage" :key="i" />
-    </div>
+    <AppHorizontalCategoryMenu :menu="subMenu" />
 
-    <div v-else-if="data" class="d-flex flex-wrap gap-1">
-      <BaseAssetTile
-        v-for="item in allItems"
-        :key="item.id"
-        :url="item.urls.thumb"
-        :name="item.name"
-      />
-    </div>
+    <div class="my-3">
+      <div v-if="loading && !data" class="d-flex flex-wrap gap-1">
+        <BaseAssetTileSkeleton v-for="i in perPage" :key="i" />
+      </div>
 
-    <div v-if="isLoading" class="d-flex justify-content-center my-3">
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
+      <div v-else-if="data" class="d-flex flex-wrap gap-1">
+        <BaseAssetTile
+          v-for="item in allItems"
+          :key="item.id"
+          :url="item.urls.thumb"
+          :name="item.name"
+        />
+      </div>
+
+      <div v-if="isLoading" class="d-flex justify-content-center my-3">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </div>
     </div>
 
@@ -26,6 +30,9 @@
 <script setup lang="ts">
 import useIconscoutApi from '~/composables/useIconscoutApi'
 import useInfiniteScroll from '~/composables/useInfiniteScroll'
+import { subMenu } from '~/data/mock-data'
+
+import AppHorizontalCategoryMenu from '@components/HorizontalCategoryMenu/AppHorizontalCategoryMenu.vue'
 import BaseAssetTile from '~/components/base/BaseAssetTile/BaseAssetTile.vue'
 import BaseAssetTileSkeleton from '~/components/base/BaseAssetTile/BaseAssetTileSkeleton/BaseAssetTileSkeleton.vue'
 import AppSignupBlurBanner from '~/components/SignupBlurBanner/AppSignupBlurBanner.vue'
