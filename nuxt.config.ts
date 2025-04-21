@@ -37,7 +37,6 @@ export default defineNuxtConfig({
           name: 'preset-default',
           params: {
             overrides: {
-              // włączamy lub wyłączamy konkretne optymalizacje
               removeViewBox: false
             }
           }

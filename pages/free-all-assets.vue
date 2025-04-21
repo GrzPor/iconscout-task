@@ -6,14 +6,15 @@
     <section class="my-4">
       <h2 class="mb-3 page-title">3D Illustrations</h2>
       <div v-if="loading3d && !data3d" class="tile-grid-asset">
-        <BaseAssetTileSkeleton v-for="i in 15" :key="i" />
+        <BaseAssetTileSkeleton v-for="i in 20" :key="i" />
       </div>
       <div v-else-if="data3d" class="tile-grid-asset">
         <BaseAssetTile
-          v-for="item in items3d"
+          v-for="(item, index) in items3d"
           :key="item.id"
           :url="item.urls.thumb"
           :name="item.name"
+          :redirect-url="checkIfItLastItem(item, index, items3d)"
         />
       </div>
     </section>
@@ -26,10 +27,11 @@
       </div>
       <div v-else-if="dataIllustrations" class="tile-grid-asset">
         <BaseAssetTile
-          v-for="item in itemsIllustrations"
+          v-for="(item, index) in itemsIllustrations"
           :key="item.id"
           :url="item.urls.thumb"
           :name="item.name"
+          :redirect-url="checkIfItLastItem(item, index, itemsIllustrations)"
         />
       </div>
     </section>
@@ -37,15 +39,16 @@
     <!-- Icons Section -->
     <section class="my-4">
       <h2 class="mb-3 page-title">Icons</h2>
-      <div v-if="loadingIcons && !dataIcons" class="tile-grid-asset">
+      <div v-if="loadingIcons && !dataIcons" class="tile-grid-icon">
         <BaseIconTileSkeleton v-for="i in 15" :key="i" />
       </div>
-      <div v-else-if="dataIcons" class="tile-grid-asset">
+      <div v-else-if="dataIcons" class="tile-grid-icon">
         <BaseIconTile
-          v-for="item in itemsIcons"
+          v-for="(item, index) in itemsIcons"
           :key="item.id"
           :url="item.urls.png_128"
           :name="item.name"
+          :redirect-url="checkIfItLastItem(item, index, itemsIcons)"
         />
       </div>
     </section>
@@ -130,7 +133,7 @@ const loadIconsAssets = async () => {
   await fetchDataIcons({
     asset: 'icon',
     page: 1,
-    perPage: 15
+    perPage: 20
   })
 
   if (dataIcons.value) {
@@ -148,6 +151,23 @@ const loadIllustrationsAssets = async () => {
   if (dataIllustrations.value) {
     itemsIllustrations.value = [...dataIllustrations.value.response.items.data]
   }
+}
+
+const checkIfItLastItem = (item: any, index: number, items: any[]) => {
+  if (index === items.length - 1) {
+    switch (item.asset) {
+      case '3d':
+        return '/free-3d-illustrations'
+      case 'icon':
+        return '/free-icons'
+      case 'illustration':
+        return '/free-illustrations'
+      default:
+        return null
+    }
+  }
+
+  return null
 }
 
 onMounted(() => {

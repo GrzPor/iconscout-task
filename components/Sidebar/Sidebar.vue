@@ -44,8 +44,8 @@
 
 <script setup lang="ts">
 import SidebarRadioSection from './SidebarRadioSection/SidebarRadioSection.vue'
-import { ref } from 'vue'
 import AngleUpIcon from '@images/icons/angle-up.svg'
+import { subMenu } from '~/data/mock-data'
 
 defineProps({
   isClosed: {
@@ -152,20 +152,7 @@ const radioSections = ref([
   }
 ])
 
-const categories = ref([
-  {
-    name: 'E-commerce & Shopping',
-    url: 'e-commerce-shopping'
-  },
-  {
-    name: 'Deliver',
-    url: 'delivery'
-  },
-  {
-    name: 'Business',
-    url: 'business'
-  }
-])
+const categories = ref(subMenu)
 
 function toggleSection(index: number) {
   radioSections.value[index].isOpen = !radioSections.value[index].isOpen
