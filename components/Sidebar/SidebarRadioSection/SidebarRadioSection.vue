@@ -6,11 +6,7 @@
       class="w-100 btn-zero app-sidebar__btn"
     >
       <span class="font-size-sm app-sidebar__label"> {{ item.title }} </span>
-      <img
-        src="@images/icons/angle-up.svg"
-        alt="angle-up"
-        :class="{ 'rotate-180': !item.isOpen }"
-      />
+      <AngleUpIcon :class="{ 'rotate-180': !item.isOpen }" />
     </button>
 
     <BCollapse :id="`collapse-${item.id}`" v-model="item.isOpen">
@@ -28,6 +24,7 @@
 
 <script setup lang="ts">
 import BaseRadioInput from '@components/base/BaseRadioInput/BaseRadioInput.vue'
+import AngleUpIcon from '@images/icons/angle-up.svg'
 
 interface SidebarRadioSectionProps {
   items: {

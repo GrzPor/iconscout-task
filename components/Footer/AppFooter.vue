@@ -4,8 +4,8 @@
       <div class="d-flex py-4 flex-wrap justify-content-between">
         <div class="d-flex flex-col flex-sm-row flex-wrap align-items-center">
           <img
-            src="@images/brand/iconscout_logo_for_white_bg.svg"
-            alt="Iconcout Logo"
+            src="/assets/images/brand/iconscout_logo_for_white_bg.svg"
+            alt="IconScout"
             class="me-3"
           />
           <span class="font-size-sm">Design Resource Marketplace</span>
@@ -37,10 +37,10 @@
             <h5 class="font-size-sm mb-3-4">Get LottieFiles mobile app</h5>
             <div class="d-flex">
               <a href="#" target="_blank" rel="noopener noreferrer" class="me-3-4">
-                <img src="@images/mobile-app/apple-store-btn.svg" alt="App Store Badge" />
+                <AppleStoreBadge />
               </a>
               <a href="#" target="_blank" rel="noopener noreferrer">
-                <img src="@images/mobile-app/google-store-btn.svg" alt="Google Play Badge" />
+                <GooglePlayBadge />
               </a>
             </div>
           </div>
@@ -55,15 +55,15 @@
         <div class="d-flex justify-content-between">
           <div class="d-inline-flex align-items-center app-copyright__content">
             <span>&copy; {{ new Date().getFullYear() }} Design Barn Inc. Made with</span>
-            <img src="@images/icons/heart.svg" alt="love" class="mx-1" />
+            <HeartIcon class="mx-1" />
             <span>in India</span>
           </div>
           <div class="d-flex align-items-center">
             <div class="d-flex align-items-center me-4">
-              <img src="@images/icons/pad-lock.svg" alt="pad lock" class="me-1" />
+              <PadLockIcon class="me-1" />
               <span class="app-copyright__payments">Secure Payments</span>
             </div>
-            <img src="@images/logo/stripe.svg" alt="Stripe" />
+            <img src="/assets/images/logo/stripe.svg" alt="Stripe" />
           </div>
         </div>
       </div>
@@ -74,6 +74,10 @@
 <script setup lang="ts">
 import BaseNavList from '@components/base/BaseNavList/BaseNavList.vue'
 import BaseSocialList from '@components/base/BaseSocialList/BaseSocialList.vue'
+import AppleStoreBadge from '@images/mobile-app/apple-store-btn.svg'
+import GooglePlayBadge from '@images/mobile-app/google-store-btn.svg'
+import HeartIcon from '@images/icons/heart.svg'
+import PadLockIcon from '@images/icons/pad-lock.svg'
 
 import apple from '@images/social/apple.svg'
 import windows from '@images/social/windows.svg'

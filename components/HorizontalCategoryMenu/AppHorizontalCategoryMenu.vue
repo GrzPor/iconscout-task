@@ -13,14 +13,14 @@
             class="app-horizontal-category-menu__arrow app-horizontal-category-menu__arrow--left"
             @click="scrollLeft"
           >
-            <img src="@images/icons/angle-left.svg" alt="angle-left" />
+            <AngleLeftIcon />
           </button>
           <button
             v-if="showRightArrow"
             class="app-horizontal-category-menu__arrow app-horizontal-category-menu__arrow--right"
             @click="scrollRight"
           >
-            <img src="@images/icons/angle-right.svg" alt="angle-right" />
+            <AngleRightIcon />
           </button>
         </div>
       </div>
@@ -30,6 +30,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
+import AngleLeftIcon from '@images/icons/angle-left.svg'
+import AngleRightIcon from '@images/icons/angle-right.svg'
 
 defineProps<{
   menu: {

@@ -7,7 +7,7 @@
       class="d-flex align-items-center justify-content-center"
     >
       <a :href="item.link">
-        <img :src="item.icon" :alt="item.icon" />
+        <component :is="item.icon" />
       </a>
     </li>
   </ul>
@@ -16,7 +16,7 @@
 <script setup lang="ts">
 interface SocialItem {
   link: string
-  icon: string
+  icon: any
 }
 
 defineProps({

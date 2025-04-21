@@ -15,11 +15,7 @@
         class="w-100 btn-zero app-sidebar__btn"
       >
         <span class="font-size-sm app-sidebar__label"> Categories </span>
-        <img
-          src="@images/icons/angle-up.svg"
-          alt="angle-up"
-          :class="{ 'rotate-180': !isCategoriesOpen }"
-        />
+        <AngleUpIcon :class="{ 'rotate-180': !isCategoriesOpen }" />
       </button>
 
       <BCollapse id="collapse-categories" v-model="isCategoriesOpen">
@@ -36,6 +32,7 @@
 <script setup lang="ts">
 import SidebarRadioSection from './SidebarRadioSection/SidebarRadioSection.vue'
 import { ref } from 'vue'
+import AngleUpIcon from '@images/icons/angle-up.svg'
 
 const exclusiveIcons = ref(false)
 const isCategoriesOpen = ref(false)
