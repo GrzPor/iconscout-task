@@ -1,10 +1,21 @@
 @use '~/assets/scss/variables' as *;
 
 .app-header {
+  background-color: #fff;
   box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 
   &__logo {
+    display: flex;
+    flex-shrink: 0;
     margin-right: 30px;
+    max-width: 170px;
+
+    img {
+      width: 100%;
+    }
   }
 
   &__search {
