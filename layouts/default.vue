@@ -9,10 +9,7 @@
       </div>
       <div class="d-flex" :class="{ 'sidebar-closed': isClosed }">
         <Sidebar :is-closed="isClosed" />
-        <div
-          class="px-5 py-3 position-relative content-container"
-          :class="{ 'full-width': isClosed }"
-        >
+        <div class="py-3 position-relative content-container" :class="{ 'full-width': isClosed }">
           <slot />
         </div>
       </div>
@@ -77,6 +74,7 @@ const pageDescription = computed(() => {
 
 <style lang="scss" scoped>
 .content-container {
+  padding-inline: 40px;
   transition: width 0.3s ease;
   width: calc(100% - 260px);
 
