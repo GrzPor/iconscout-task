@@ -1,5 +1,5 @@
 <template>
-  <div class="asset-tile-skeleton"></div>
+  <div class="asset-tile-skeleton" role="img" aria-label="Loading asset" aria-busy="true"></div>
 </template>
 
 <style lang="scss" scoped>

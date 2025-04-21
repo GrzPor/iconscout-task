@@ -1,7 +1,7 @@
 <template>
-  <div class="app-subheader py-4">
-    <h1>{{ title }}</h1>
-    <p>{{ description }}</p>
+  <div class="app-subheader py-4" role="region" aria-labelledby="page-title">
+    <h1 id="page-title">{{ title }}</h1>
+    <p v-if="description">{{ description }}</p>
   </div>
 </template>
 <script setup lang="ts">

@@ -2,11 +2,11 @@
   <div class="icon-tile">
     <img :src="url" :alt="name" class="icon-tile__image" />
     <div class="icon-tile__buttons">
-      <button class="icon-tile__button">
-        <FolderPlusIcon />
+      <button class="icon-tile__button" aria-label="Add to collection">
+        <FolderPlusIcon aria-hidden="true" />
       </button>
-      <button class="icon-tile__button">
-        <DownloadIcon />
+      <button class="icon-tile__button" aria-label="Download icon">
+        <DownloadIcon aria-hidden="true" />
       </button>
     </div>
   </div>

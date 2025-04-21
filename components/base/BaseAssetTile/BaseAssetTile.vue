@@ -2,12 +2,12 @@
   <div class="asset-tile">
     <img :src="url" :alt="name" class="asset-tile__image" />
     <p class="font-size-xs mb-0 asset-tile__name">{{ name }}</p>
-    <div class="asset-tile__buttons">
-      <button class="asset-tile__button">
-        <FolderPlusIcon />
+    <div class="asset-tile__buttons" role="group" aria-label="Asset actions">
+      <button class="asset-tile__button" aria-label="Add to collection" title="Add to collection">
+        <FolderPlusIcon aria-hidden="true" />
       </button>
-      <button class="asset-tile__button">
-        <DownloadIcon />
+      <button class="asset-tile__button" aria-label="Download asset" title="Download asset">
+        <DownloadIcon aria-hidden="true" />
       </button>
     </div>
   </div>

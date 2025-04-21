@@ -1,8 +1,14 @@
 <template>
-  <button class="d-flex align-items-center px-4 py-3-4 button-zero" @click="toggleSidebar">
-    <FilterIcon class="me-2" />
+  <button
+    class="d-flex align-items-center px-4 py-3-4 button-zero"
+    @click="toggleSidebar"
+    aria-label="Toggle filters sidebar"
+    :aria-expanded="isToggled"
+    aria-controls="sidebar-filters"
+  >
+    <FilterIcon class="me-2" aria-hidden="true" />
     Filters
-    <CloseIcon v-if="!isToggled" class="ms-auto" />
+    <CloseIcon v-if="!isToggled" class="ms-auto" aria-hidden="true" />
   </button>
 </template>
 

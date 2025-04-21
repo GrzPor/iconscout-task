@@ -3,11 +3,16 @@
     <AppHorizontalCategoryMenu :menu="subMenu" />
 
     <div class="my-3">
-      <div v-if="loading && !data" class="d-flex flex-wrap gap-1">
+      <div
+        v-if="loading && !data"
+        class="d-flex flex-wrap gap-1"
+        aria-busy="true"
+        aria-label="Loading icons"
+      >
         <BaseIconTileSkeleton v-for="i in perPage" :key="i" />
       </div>
 
-      <div v-else-if="data" class="d-flex flex-wrap gap-1">
+      <div v-else-if="data" class="d-flex flex-wrap gap-1" role="region" aria-label="Icon gallery">
         <BaseIconTile
           v-for="icon in allItems"
           :key="icon.id"
@@ -16,9 +21,9 @@
         />
       </div>
 
-      <div v-if="isLoading" class="d-flex justify-content-center my-3">
+      <div v-if="isLoading" class="d-flex justify-content-center my-3" aria-live="polite">
         <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
+          <span class="visually-hidden">Loading more icons...</span>
         </div>
       </div>
     </div>
