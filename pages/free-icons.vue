@@ -5,14 +5,14 @@
     <div class="my-3">
       <div
         v-if="loading && !data"
-        class="d-flex flex-wrap gap-1"
+        class="tile-grid-icon"
         aria-busy="true"
         aria-label="Loading icons"
       >
         <BaseIconTileSkeleton v-for="i in perPage" :key="i" />
       </div>
 
-      <div v-else-if="data" class="d-flex flex-wrap gap-1" role="region" aria-label="Icon gallery">
+      <div v-else-if="data" class="tile-grid-icon" role="region" aria-label="Icon gallery">
         <BaseIconTile
           v-for="icon in allItems"
           :key="icon.id"

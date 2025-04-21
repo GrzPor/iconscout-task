@@ -33,3 +33,15 @@ body {
 .rotate-180 {
   transform: rotate(180deg);
 }
+
+.tile-grid-icon {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.25rem;
+}
+
+.tile-grid-asset {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.25rem;
+}

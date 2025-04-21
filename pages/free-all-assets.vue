@@ -5,10 +5,10 @@
     <!-- 3D Section -->
     <section class="my-4">
       <h2 class="mb-3 page-title">3D Illustrations</h2>
-      <div v-if="loading3d && !data3d" class="d-flex flex-wrap gap-1">
+      <div v-if="loading3d && !data3d" class="tile-grid-asset">
         <BaseAssetTileSkeleton v-for="i in 15" :key="i" />
       </div>
-      <div v-else-if="data3d" class="d-flex flex-wrap gap-1">
+      <div v-else-if="data3d" class="tile-grid-asset">
         <BaseAssetTile
           v-for="item in items3d"
           :key="item.id"
@@ -21,10 +21,10 @@
     <!-- Illustrations Section -->
     <section class="my-4">
       <h2 class="mb-3 page-title">Illustrations</h2>
-      <div v-if="loadingIllustrations && !dataIllustrations" class="d-flex flex-wrap gap-1">
+      <div v-if="loadingIllustrations && !dataIllustrations" class="tile-grid-asset">
         <BaseAssetTileSkeleton v-for="i in 15" :key="i" />
       </div>
-      <div v-else-if="dataIllustrations" class="d-flex flex-wrap gap-1">
+      <div v-else-if="dataIllustrations" class="tile-grid-asset">
         <BaseAssetTile
           v-for="item in itemsIllustrations"
           :key="item.id"
@@ -37,10 +37,10 @@
     <!-- Icons Section -->
     <section class="my-4">
       <h2 class="mb-3 page-title">Icons</h2>
-      <div v-if="loadingIcons && !dataIcons" class="d-flex flex-wrap gap-1">
+      <div v-if="loadingIcons && !dataIcons" class="tile-grid-asset">
         <BaseIconTileSkeleton v-for="i in 15" :key="i" />
       </div>
-      <div v-else-if="dataIcons" class="d-flex flex-wrap gap-1">
+      <div v-else-if="dataIcons" class="tile-grid-asset">
         <BaseIconTile
           v-for="item in itemsIcons"
           :key="item.id"

@@ -3,11 +3,11 @@
     <AppHorizontalCategoryMenu :menu="subMenu" />
 
     <div class="my-3">
-      <div v-if="loading && !data" class="d-flex flex-wrap gap-1">
+      <div v-if="loading && !data" class="tile-grid-asset">
         <BaseAssetTileSkeleton v-for="i in perPage" :key="i" />
       </div>
 
-      <div v-else-if="data" class="d-flex flex-wrap gap-1">
+      <div v-else-if="data" class="tile-grid-asset">
         <BaseAssetTile
           v-for="item in allItems"
           :key="item.id"

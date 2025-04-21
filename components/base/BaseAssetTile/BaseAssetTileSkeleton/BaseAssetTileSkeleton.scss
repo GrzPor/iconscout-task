@@ -2,6 +2,6 @@
 .asset-tile-skeleton {
   background-color: $gray-100;
   border-radius: 8px;
-  height: 210px;
-  width: 280px;
+  min-height: 210px;
+  min-width: 280px;
 }
