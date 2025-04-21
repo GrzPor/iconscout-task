@@ -1,5 +1,5 @@
 <template>
-  <div class="px-5 py-3 position-relative">
+  <div>
     <div v-if="loading && !data" class="d-flex flex-wrap gap-1">
       <BaseAssetTileSkeleton v-for="i in perPage" :key="i" />
     </div>
@@ -24,7 +24,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
 import useIconscoutApi from '~/composables/useIconscoutApi'
 import useInfiniteScroll from '~/composables/useInfiniteScroll'
 import BaseAssetTile from '~/components/base/BaseAssetTile/BaseAssetTile.vue'

@@ -1,5 +1,5 @@
 <template>
-  <div class="app-sidebar">
+  <div class="app-sidebar" :class="{ 'is-closed': isClosed }">
     <div class="app-sidebar__wrapper px-4">
       <div class="base-toggle">
         <span class="font-size-sm app-sidebar__label">IconScout Exclusive</span>
@@ -33,6 +33,13 @@
 import SidebarRadioSection from './SidebarRadioSection/SidebarRadioSection.vue'
 import { ref } from 'vue'
 import AngleUpIcon from '@images/icons/angle-up.svg'
+
+defineProps({
+  isClosed: {
+    type: Boolean,
+    default: false
+  }
+})
 
 const exclusiveIcons = ref(false)
 const isCategoriesOpen = ref(false)
@@ -146,6 +153,7 @@ const categories = ref([
     url: 'business'
   }
 ])
+
 function toggleSection(index: number) {
   radioSections.value[index].isOpen = !radioSections.value[index].isOpen
 }

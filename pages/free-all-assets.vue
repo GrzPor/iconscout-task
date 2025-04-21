@@ -1,5 +1,5 @@
 <template>
-  <div class="px-5 py-3 position-relative page-container">
+  <div>
     <AppHorizontalCategoryMenu :menu="subMenu" />
 
     <!-- 3D Section -->
@@ -53,7 +53,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
 import useIconscoutApi from '~/composables/useIconscoutApi'
 import AppHorizontalCategoryMenu from '@components/HorizontalCategoryMenu/AppHorizontalCategoryMenu.vue'
 import BaseAssetTile from '@components/base/BaseAssetTile/BaseAssetTile.vue'
@@ -154,9 +153,6 @@ const subMenu = [
 
 <style lang="scss" scoped>
 @use '~/assets/scss/_variables.scss' as *;
-.page-container {
-  width: calc(100% - 260px);
-}
 
 .page-title {
   color: $navy-200;
