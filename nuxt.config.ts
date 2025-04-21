@@ -15,7 +15,19 @@ export default defineNuxtConfig({
       iconscoutClientId: process.env.ICONSCOUT_CLIENT_ID || ''
     }
   },
-  // Konfiguracja dla nuxt-svgo
+  app: {
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+      htmlAttrs: {
+        lang: 'en'
+      },
+      meta: [
+        { name: 'format-detection', content: 'telephone=no' },
+        { name: 'robots', content: 'index, follow' }
+      ]
+    }
+  },
   svgo: {
     defaultImport: 'component', // 'component', 'url', 'raw' lub 'sprite'
     svgoConfig: {

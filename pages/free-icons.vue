@@ -37,6 +37,39 @@ import BaseIconTile from '~/components/base/BaseIconTile/BaseIconTile.vue'
 import BaseIconTileSkeleton from '~/components/base/BaseIconTile/BaseIconTileSkeleton/BaseIconTileSkeleton.vue'
 import AppSignupBlurBanner from '~/components/SignupBlurBanner/AppSignupBlurBanner.vue'
 
+useHead({
+  title: 'Free Icons - Browse and Download Free Icons from Iconscout',
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Discover and download high-quality free icons for your design projects. Browse our extensive collection of professional icons in various styles and formats.'
+    },
+    {
+      name: 'keywords',
+      content:
+        'free icons, icon pack, icon design, vector icons, web icons, UI icons, UX icons, download icons'
+    },
+    { property: 'og:title', content: 'Free Icons - Browse and Download Free Icons from Iconscout' },
+    {
+      property: 'og:description',
+      content: 'Discover and download high-quality free icons for your design projects.'
+    },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'localhost:3000/free-icons' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    {
+      name: 'twitter:title',
+      content: 'Free Icons - Browse and Download Free Icons from Iconscout'
+    },
+    {
+      name: 'twitter:description',
+      content: 'Discover and download high-quality free icons for your design projects.'
+    }
+  ],
+  link: [{ rel: 'canonical', href: 'http://localhost:3000/free-icons' }]
+})
+
 const { data, loading, fetchData } = useIconscoutApi()
 const page = ref(1)
 const perPage = ref(50)

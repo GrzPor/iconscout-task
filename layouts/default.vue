@@ -1,10 +1,7 @@
 <template>
   <div>
     <AppHeader />
-    <AppSubHeader
-      title="237 Limit 3D Illustrations"
-      description="248 3Ds exclusively selected by our designer community."
-    />
+    <AppSubHeader :title="pageTitle" :description="pageDescription" />
     <main>
       <div class="d-flex">
         <SidebarToggle @toggle-sidebar="toggleSidebar" />
@@ -44,6 +41,38 @@ const isClosed = ref(false)
 function toggleSidebar() {
   isClosed.value = !isClosed.value
 }
+
+const pageDefaults = {
+  '/': {
+    title: 'Iconscout - High Quality Digital Assets',
+    description: 'Browse and download icons, illustrations, and 3D assets'
+  },
+  '/free-icons': {
+    title: '237 High Quality Free Icons',
+    description: '248 Icons exclusively selected by our designer community.'
+  },
+  '/free-illustrations': {
+    title: '237 Stunning Free Illustrations',
+    description: '248 Illustrations exclusively selected by our designer community.'
+  },
+  '/free-3d-illustrations': {
+    title: '237 Limit 3D Illustrations',
+    description: '248 3Ds exclusively selected by our designer community.'
+  },
+  '/free-all-assets': {
+    title: 'All Free Digital Assets',
+    description: 'Browse our complete collection of premium-quality free assets.'
+  }
+}
+
+const route = useRoute()
+const pageTitle = computed(() => {
+  return pageDefaults[route.path]?.title || 'Iconscout Assets'
+})
+
+const pageDescription = computed(() => {
+  return pageDefaults[route.path]?.description || 'High-quality digital assets for your projects'
+})
 </script>
 
 <style lang="scss" scoped>

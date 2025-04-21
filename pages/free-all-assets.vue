@@ -62,6 +62,42 @@ import BaseAssetTileSkeleton from '@components/base/BaseAssetTile/BaseAssetTileS
 import BaseIconTile from '@components/base/BaseIconTile/BaseIconTile.vue'
 import BaseIconTileSkeleton from '@components/base/BaseIconTile/BaseIconTileSkeleton/BaseIconTileSkeleton.vue'
 
+useHead({
+  title: 'Free Design Assets - Browse Icons, Illustrations and 3D Graphics from Iconscout',
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Discover and download high-quality free design assets for your projects. Browse our extensive collection of icons, illustrations, and 3D graphics in various styles and formats.'
+    },
+    {
+      name: 'keywords',
+      content:
+        'free design assets, icon pack, illustrations, 3D graphics, vector icons, web icons, UI design, UX design, download assets'
+    },
+    {
+      property: 'og:title',
+      content: 'Free Design Assets - Browse Icons, Illustrations and 3D Graphics from Iconscout'
+    },
+    {
+      property: 'og:description',
+      content: 'Discover and download high-quality free design assets for your projects.'
+    },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'localhost:3000/free-all-assets' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    {
+      name: 'twitter:title',
+      content: 'Free Design Assets - Browse Icons, Illustrations and 3D Graphics from Iconscout'
+    },
+    {
+      name: 'twitter:description',
+      content: 'Discover and download high-quality free design assets for your projects.'
+    }
+  ],
+  link: [{ rel: 'canonical', href: 'http://localhost:3000/free-all-assets' }]
+})
+
 // 3D assets
 const { data: data3d, loading: loading3d, fetchData: fetchData3d } = useIconscoutApi()
 const items3d = ref<any[]>([])

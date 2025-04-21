@@ -37,6 +37,42 @@ import BaseAssetTile from '~/components/base/BaseAssetTile/BaseAssetTile.vue'
 import BaseAssetTileSkeleton from '~/components/base/BaseAssetTile/BaseAssetTileSkeleton/BaseAssetTileSkeleton.vue'
 import AppSignupBlurBanner from '~/components/SignupBlurBanner/AppSignupBlurBanner.vue'
 
+useHead({
+  title: 'Free 3D Illustrations - Browse and Download Free 3D Illustrations from Iconscout',
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Discover and download high-quality free 3D illustrations for your design projects. Browse our extensive collection of professional 3D illustrations in various styles and formats.'
+    },
+    {
+      name: 'keywords',
+      content:
+        'free 3D illustrations, 3D graphics, 3D design, vector illustrations, web illustrations, UI illustrations, UX illustrations, download illustrations'
+    },
+    {
+      property: 'og:title',
+      content: 'Free 3D Illustrations - Browse and Download Free 3D Illustrations from Iconscout'
+    },
+    {
+      property: 'og:description',
+      content: 'Discover and download high-quality free 3D illustrations for your design projects.'
+    },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'localhost:3000/free-3d-illustrations' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    {
+      name: 'twitter:title',
+      content: 'Free 3D Illustrations - Browse and Download Free 3D Illustrations from Iconscout'
+    },
+    {
+      name: 'twitter:description',
+      content: 'Discover and download high-quality free 3D illustrations for your design projects.'
+    }
+  ],
+  link: [{ rel: 'canonical', href: 'http://localhost:3000/free-3d-illustrations' }]
+})
+
 const { data, loading, fetchData } = useIconscoutApi()
 const page = ref(1)
 const perPage = ref(50)
