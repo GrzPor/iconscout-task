@@ -5,6 +5,7 @@
   border-bottom: 1px solid $gray-200;
   border-right: 1px solid $gray-200;
   width: $sidebar-width;
+  flex-shrink: 0;
 
   &__category {
     background-color: #f5f6fa;

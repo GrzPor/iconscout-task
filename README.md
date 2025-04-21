@@ -20,6 +20,22 @@ yarn install
 bun install
 ```
 
+## API Configuration
+
+This project uses the Iconscout API to fetch assets (icons, illustrations, 3D, etc). To configure the API:
+
+1. Copy `.env.example` to a new file named `.env`:
+
+```bash
+cp .env.example .env
+```
+
+2. Edit the `.env` file and replace `your_client_id_here` with your actual Iconscout Client-ID.
+
+```
+ICONSCOUT_CLIENT_ID=your_actual_client_id
+```
+
 ## Development Server
 
 Start the development server on `http://localhost:3000`:

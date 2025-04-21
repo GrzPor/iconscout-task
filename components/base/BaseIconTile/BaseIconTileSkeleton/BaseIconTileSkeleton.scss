@@ -1,0 +1,7 @@
+@use '~/assets/scss/variables' as *;
+.icon-tile-skeleton {
+  background-color: $gray-100;
+  border-radius: 6px;
+  height: 140px;
+  width: 140px;
+}

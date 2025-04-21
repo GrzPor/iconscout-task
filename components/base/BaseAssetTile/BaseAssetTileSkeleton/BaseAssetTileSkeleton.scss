@@ -1,0 +1,7 @@
+@use '~/assets/scss/variables' as *;
+.asset-tile-skeleton {
+  background-color: $gray-100;
+  border-radius: 8px;
+  height: 210px;
+  width: 280px;
+}
