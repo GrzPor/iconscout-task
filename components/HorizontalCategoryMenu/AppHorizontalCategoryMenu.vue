@@ -1,26 +1,32 @@
 <template>
-  <div class="app-horizontal-category-menu-container">
+  <div
+    class="app-horizontal-category-menu-container"
+    role="navigation"
+    aria-label="Category navigation"
+  >
     <div class="app-horizontal-category-menu-wrapper" ref="wrapperRef">
       <div class="app-horizontal-category-menu">
-        <ul class="list-unstyled mb-0 d-inline-block" ref="menuRef">
+        <ul class="list-unstyled mb-0 d-inline-block" ref="menuRef" role="list">
           <li v-for="item in menu" :key="item.url" class="app-horizontal-category-menu__item">
             <a :href="item.url" class="app-horizontal-category-menu__link">{{ item.name }}</a>
           </li>
         </ul>
-        <div class="app-horizontal-category-menu__arrows">
+        <div class="app-horizontal-category-menu__arrows" aria-hidden="false">
           <button
             v-if="showLeftArrow"
             class="app-horizontal-category-menu__arrow app-horizontal-category-menu__arrow--left"
             @click="scrollLeft"
+            aria-label="Scroll categories left"
           >
-            <img src="@images/icons/angle-left.svg" alt="angle-left" />
+            <AngleLeftIcon aria-hidden="true" />
           </button>
           <button
             v-if="showRightArrow"
             class="app-horizontal-category-menu__arrow app-horizontal-category-menu__arrow--right"
             @click="scrollRight"
+            aria-label="Scroll categories right"
           >
-            <img src="@images/icons/angle-right.svg" alt="angle-right" />
+            <AngleRightIcon aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -30,6 +36,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
+import AngleLeftIcon from '@images/icons/angle-left.svg'
+import AngleRightIcon from '@images/icons/angle-right.svg'
 
 defineProps<{
   menu: {

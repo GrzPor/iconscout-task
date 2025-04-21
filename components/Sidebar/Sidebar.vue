@@ -1,29 +1,38 @@
 <template>
-  <div class="app-sidebar">
+  <div
+    class="app-sidebar"
+    :class="{ 'is-closed': isClosed }"
+    role="complementary"
+    aria-label="Filters"
+  >
     <div class="app-sidebar__wrapper px-4">
       <div class="base-toggle">
-        <span class="font-size-sm app-sidebar__label">IconScout Exclusive</span>
-        <input type="checkbox" id="exclusiveIcons" v-model="exclusiveIcons" />
-        <label for="exclusiveIcons"></label>
+        <span class="font-size-sm app-sidebar__label" id="exclusive-label"
+          >IconScout Exclusive</span
+        >
+        <input
+          type="checkbox"
+          id="exclusiveIcons"
+          v-model="exclusiveIcons"
+          aria-labelledby="exclusive-label"
+        />
+        <label for="exclusiveIcons" aria-hidden="true"></label>
       </div>
     </div>
     <SidebarRadioSection :items="radioSections" @toggle="toggleSection" />
     <div class="app-sidebar__wrapper px-4">
       <button
         @click="isCategoriesOpen = !isCategoriesOpen"
-        aria-controls="collapse-categories`"
+        aria-controls="collapse-categories"
+        :aria-expanded="isCategoriesOpen"
         class="w-100 btn-zero app-sidebar__btn"
       >
         <span class="font-size-sm app-sidebar__label"> Categories </span>
-        <img
-          src="@images/icons/angle-up.svg"
-          alt="angle-up"
-          :class="{ 'rotate-180': !isCategoriesOpen }"
-        />
+        <AngleUpIcon :class="{ 'rotate-180': !isCategoriesOpen }" aria-hidden="true" />
       </button>
 
       <BCollapse id="collapse-categories" v-model="isCategoriesOpen">
-        <ul class="list-unstyled d-flex flex-wrap gap-2">
+        <ul class="list-unstyled d-flex flex-wrap gap-2" role="list">
           <li v-for="(category, index) in categories" :key="index">
             <a :href="category.url" class="app-sidebar__category">{{ category.name }}</a>
           </li>
@@ -36,6 +45,14 @@
 <script setup lang="ts">
 import SidebarRadioSection from './SidebarRadioSection/SidebarRadioSection.vue'
 import { ref } from 'vue'
+import AngleUpIcon from '@images/icons/angle-up.svg'
+
+defineProps({
+  isClosed: {
+    type: Boolean,
+    default: false
+  }
+})
 
 const exclusiveIcons = ref(false)
 const isCategoriesOpen = ref(false)
@@ -149,6 +166,7 @@ const categories = ref([
     url: 'business'
   }
 ])
+
 function toggleSection(index: number) {
   radioSections.value[index].isOpen = !radioSections.value[index].isOpen
 }

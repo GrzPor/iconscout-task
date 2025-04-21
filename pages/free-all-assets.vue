@@ -1,14 +1,14 @@
 <template>
-  <div class="px-5 py-3 position-relative page-container">
+  <div>
     <AppHorizontalCategoryMenu :menu="subMenu" />
 
     <!-- 3D Section -->
     <section class="my-4">
       <h2 class="mb-3 page-title">3D Illustrations</h2>
-      <div v-if="loading3d && !data3d" class="d-flex flex-wrap gap-1">
+      <div v-if="loading3d && !data3d" class="tile-grid-asset">
         <BaseAssetTileSkeleton v-for="i in 15" :key="i" />
       </div>
-      <div v-else-if="data3d" class="d-flex flex-wrap gap-1">
+      <div v-else-if="data3d" class="tile-grid-asset">
         <BaseAssetTile
           v-for="item in items3d"
           :key="item.id"
@@ -21,10 +21,10 @@
     <!-- Illustrations Section -->
     <section class="my-4">
       <h2 class="mb-3 page-title">Illustrations</h2>
-      <div v-if="loadingIllustrations && !dataIllustrations" class="d-flex flex-wrap gap-1">
+      <div v-if="loadingIllustrations && !dataIllustrations" class="tile-grid-asset">
         <BaseAssetTileSkeleton v-for="i in 15" :key="i" />
       </div>
-      <div v-else-if="dataIllustrations" class="d-flex flex-wrap gap-1">
+      <div v-else-if="dataIllustrations" class="tile-grid-asset">
         <BaseAssetTile
           v-for="item in itemsIllustrations"
           :key="item.id"
@@ -37,10 +37,10 @@
     <!-- Icons Section -->
     <section class="my-4">
       <h2 class="mb-3 page-title">Icons</h2>
-      <div v-if="loadingIcons && !dataIcons" class="d-flex flex-wrap gap-1">
+      <div v-if="loadingIcons && !dataIcons" class="tile-grid-asset">
         <BaseIconTileSkeleton v-for="i in 15" :key="i" />
       </div>
-      <div v-else-if="dataIcons" class="d-flex flex-wrap gap-1">
+      <div v-else-if="dataIcons" class="tile-grid-asset">
         <BaseIconTile
           v-for="item in itemsIcons"
           :key="item.id"
@@ -53,13 +53,50 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
 import useIconscoutApi from '~/composables/useIconscoutApi'
+import { subMenu } from '~/data/mock-data'
+
 import AppHorizontalCategoryMenu from '@components/HorizontalCategoryMenu/AppHorizontalCategoryMenu.vue'
 import BaseAssetTile from '@components/base/BaseAssetTile/BaseAssetTile.vue'
 import BaseAssetTileSkeleton from '@components/base/BaseAssetTile/BaseAssetTileSkeleton/BaseAssetTileSkeleton.vue'
 import BaseIconTile from '@components/base/BaseIconTile/BaseIconTile.vue'
 import BaseIconTileSkeleton from '@components/base/BaseIconTile/BaseIconTileSkeleton/BaseIconTileSkeleton.vue'
+
+useHead({
+  title: 'Free Design Assets - Browse Icons, Illustrations and 3D Graphics from Iconscout',
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Discover and download high-quality free design assets for your projects. Browse our extensive collection of icons, illustrations, and 3D graphics in various styles and formats.'
+    },
+    {
+      name: 'keywords',
+      content:
+        'free design assets, icon pack, illustrations, 3D graphics, vector icons, web icons, UI design, UX design, download assets'
+    },
+    {
+      property: 'og:title',
+      content: 'Free Design Assets - Browse Icons, Illustrations and 3D Graphics from Iconscout'
+    },
+    {
+      property: 'og:description',
+      content: 'Discover and download high-quality free design assets for your projects.'
+    },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'localhost:3000/free-all-assets' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    {
+      name: 'twitter:title',
+      content: 'Free Design Assets - Browse Icons, Illustrations and 3D Graphics from Iconscout'
+    },
+    {
+      name: 'twitter:description',
+      content: 'Discover and download high-quality free design assets for your projects.'
+    }
+  ],
+  link: [{ rel: 'canonical', href: 'http://localhost:3000/free-all-assets' }]
+})
 
 // 3D assets
 const { data: data3d, loading: loading3d, fetchData: fetchData3d } = useIconscoutApi()
@@ -118,45 +155,10 @@ onMounted(() => {
   loadIconsAssets()
   loadIllustrationsAssets()
 })
-
-const subMenu = [
-  { name: 'All', url: '/free-all-assets' },
-  { name: 'Icons', url: '/free-all-assets/icons' },
-  { name: 'Illustrations', url: '/free-all-assets/illustrations' },
-  { name: '3D', url: '/free-all-assets/3d' },
-  { name: 'Vectors', url: '/free-all-assets/vectors' },
-  { name: 'Animations', url: '/free-all-assets/animations' },
-  { name: 'Templates', url: '/free-all-assets/templates' },
-  { name: 'UI Kits', url: '/free-all-assets/ui-kits' },
-  { name: 'Fonts', url: '/free-all-assets/fonts' },
-  { name: 'Mockups', url: '/free-all-assets/mockups' },
-  { name: 'Backgrounds', url: '/free-all-assets/backgrounds' },
-  { name: 'Logos', url: '/free-all-assets/logos' },
-  { name: 'Textures', url: '/free-all-assets/textures' },
-  { name: 'Patterns', url: '/free-all-assets/patterns' },
-  { name: 'Infographics', url: '/free-all-assets/infographics' },
-  { name: 'Business', url: '/free-all-assets/business' },
-  { name: 'Education', url: '/free-all-assets/education' },
-  { name: 'Food', url: '/free-all-assets/food' },
-  { name: 'Nature', url: '/free-all-assets/nature' },
-  { name: 'Technology', url: '/free-all-assets/technology' },
-  { name: 'Healthcare', url: '/free-all-assets/healthcare' },
-  { name: 'Sports', url: '/free-all-assets/sports' },
-  { name: 'Travel', url: '/free-all-assets/travel' },
-  { name: 'Music', url: '/free-all-assets/music' },
-  { name: 'Cartoons', url: '/free-all-assets/cartoons' },
-  { name: 'Fashion', url: '/free-all-assets/fashion' },
-  { name: 'Holidays', url: '/free-all-assets/holidays' },
-  { name: 'Social Media', url: '/free-all-assets/social-media' },
-  { name: 'Abstract', url: '/free-all-assets/abstract' }
-]
 </script>
 
 <style lang="scss" scoped>
 @use '~/assets/scss/_variables.scss' as *;
-.page-container {
-  width: calc(100% - 260px);
-}
 
 .page-title {
   color: $navy-200;

@@ -1,6 +1,8 @@
 <template>
-  <h5 class="font-size-sm mb-3-4 nav-list__title">{{ title }}</h5>
-  <ul class="list-unstyled nav-list__items">
+  <h5 class="font-size-sm mb-3-4 nav-list__title">
+    {{ title }}
+  </h5>
+  <ul class="list-unstyled nav-list__items" role="list" aria-labelledby="nav title">
     <li v-for="item in items" :key="item.name" class="mb-1">
       <a :href="item.link" class="font-size-sm">{{ item.name }}</a>
     </li>

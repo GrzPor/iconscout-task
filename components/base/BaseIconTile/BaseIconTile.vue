@@ -2,17 +2,20 @@
   <div class="icon-tile">
     <img :src="url" :alt="name" class="icon-tile__image" />
     <div class="icon-tile__buttons">
-      <button class="icon-tile__button">
-        <img src="@images/icons/folder-plus.svg" alt="folder-plus" />
+      <button class="icon-tile__button" aria-label="Add to collection">
+        <FolderPlusIcon aria-hidden="true" />
       </button>
-      <button class="icon-tile__button">
-        <img src="@images/icons/download.svg" alt="download" />
+      <button class="icon-tile__button" aria-label="Download icon">
+        <DownloadIcon aria-hidden="true" />
       </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import FolderPlusIcon from '@images/icons/folder-plus.svg'
+import DownloadIcon from '@images/icons/download.svg'
+
 defineProps<{
   url: string
   name: string
