@@ -4,4 +4,10 @@
   border-radius: 8px;
   min-height: 210px;
   min-width: 280px;
+
+  &.asset-tile-skeleton--icon {
+    border-radius: 6px;
+    min-height: 140px;
+    min-width: 140px;
+  }
 }
