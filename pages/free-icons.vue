@@ -34,14 +34,16 @@
 </template>
 
 <script setup lang="ts">
-import useIconscoutApi from '~/composables/useIconscoutApi'
-import useInfiniteScroll from '~/composables/useInfiniteScroll'
-import { subMenu } from '~/data/mock-data'
+import useIconscoutApi from '@composables/useIconscoutApi'
+import useInfiniteScroll from '@composables/useInfiniteScroll'
+import { subMenu } from '@data/mock-data'
 
 import AppHorizontalCategoryMenu from '@components/HorizontalCategoryMenu/AppHorizontalCategoryMenu.vue'
-import BaseAssetTile from '~/components/base/BaseAssetTile/BaseAssetTile.vue'
-import BaseAssetTileSkeleton from '~/components/base/BaseAssetTile/BaseAssetTileSkeleton/BaseAssetTileSkeleton.vue'
-import AppSignupBlurBanner from '~/components/SignupBlurBanner/AppSignupBlurBanner.vue'
+import BaseAssetTile from '@components/base/BaseAssetTile/BaseAssetTile.vue'
+import BaseAssetTileSkeleton from '@components/base/BaseAssetTile/BaseAssetTileSkeleton/BaseAssetTileSkeleton.vue'
+import AppSignupBlurBanner from '@components/SignupBlurBanner/AppSignupBlurBanner.vue'
+
+const route = useRoute()
 
 useHead({
   title: 'Free Icons - Browse and Download Free Icons from Iconscout',
@@ -88,23 +90,53 @@ const loadNextPage = () => {
 
 const { isLoading, showSignupBanner } = useInfiniteScroll(loadNextPage)
 
+const parseApiResponse = (apiData: any): any[] => {
+  if (!apiData) {
+    return []
+  }
+
+  if (Array.isArray(apiData.data)) {
+    return apiData.data
+  } else if (apiData.response?.items?.data && Array.isArray(apiData.response.items.data)) {
+    return apiData.response.items.data
+  } else if (apiData.items?.data && Array.isArray(apiData.items.data)) {
+    return apiData.items.data
+  } else if (apiData.items && Array.isArray(apiData.items)) {
+    return apiData.items
+  }
+
+  return []
+}
+
 const loadPage = async (pageNum: number) => {
+  const searchTerm = route.query.query || ''
+  const priceFilter = route.query.price || undefined
+
   await fetchData({
     asset: 'icon',
     page: pageNum,
-    perPage: perPage.value
+    perPage: perPage.value,
+    searchTerm: searchTerm as string,
+    price: priceFilter as string
   })
 
   if (data.value) {
+    const parsedData = parseApiResponse(data.value)
+
     if (pageNum === 1) {
-      allItems.value = [...data.value.response.items.data]
+      allItems.value = [...parsedData]
     } else {
-      allItems.value = [...allItems.value, ...data.value.response.items.data]
+      allItems.value = [...allItems.value, ...parsedData]
     }
   }
 }
 
-onMounted(() => {
-  loadPage(1)
-})
+watch(
+  () => route.query,
+  () => {
+    page.value = 1
+    loadPage(1)
+  },
+  { deep: true, immediate: true }
+)
 </script>

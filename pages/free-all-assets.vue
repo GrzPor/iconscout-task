@@ -57,8 +57,9 @@
 </template>
 
 <script setup lang="ts">
-import useIconscoutApi from '~/composables/useIconscoutApi'
-import { subMenu } from '~/data/mock-data'
+import useIconscoutApi from '@composables/useIconscoutApi'
+import { subMenu } from '@data/mock-data'
+import type { IconscoutParams } from '@composables/useIconscoutApi'
 
 import AppHorizontalCategoryMenu from '@components/HorizontalCategoryMenu/AppHorizontalCategoryMenu.vue'
 import BaseAssetTile from '@components/base/BaseAssetTile/BaseAssetTile.vue'
@@ -100,7 +101,8 @@ useHead({
   link: [{ rel: 'canonical', href: 'http://localhost:3000/free-all-assets' }]
 })
 
-// 3D assets
+const route = useRoute()
+
 const { data: data3d, loading: loading3d, fetchData: fetchData3d } = useIconscoutApi()
 const items3d = ref<any[]>([])
 
@@ -108,7 +110,6 @@ const items3d = ref<any[]>([])
 const { data: dataIcons, loading: loadingIcons, fetchData: fetchDataIcons } = useIconscoutApi()
 const itemsIcons = ref<any[]>([])
 
-// Illustrations assets
 const {
   data: dataIllustrations,
   loading: loadingIllustrations,
@@ -116,39 +117,87 @@ const {
 } = useIconscoutApi()
 const itemsIllustrations = ref<any[]>([])
 
+const parseApiResponse = (apiData: any): any[] => {
+  if (!apiData) {
+    return []
+  }
+
+  if (Array.isArray(apiData.data)) {
+    return apiData.data
+  } else if (apiData.response?.items?.data && Array.isArray(apiData.response.items.data)) {
+    return apiData.response.items.data
+  } else if (apiData.items?.data && Array.isArray(apiData.items.data)) {
+    return apiData.items.data
+  } else if (apiData.items && Array.isArray(apiData.items)) {
+    return apiData.items
+  }
+
+  return []
+}
+
 const load3dAssets = async () => {
-  await fetchData3d({
+  const params: IconscoutParams = {
     asset: '3d',
     page: 1,
     perPage: 15
-  })
+  }
+
+  if (route.query.query) {
+    params.searchTerm = String(route.query.query)
+  }
+
+  if (route.query.price) {
+    params.price = String(route.query.price)
+  }
+
+  await fetchData3d(params)
 
   if (data3d.value) {
-    items3d.value = [...data3d.value.response.items.data]
+    items3d.value = [...parseApiResponse(data3d.value)]
   }
 }
 
 const loadIconsAssets = async () => {
-  await fetchDataIcons({
+  const params: IconscoutParams = {
     asset: 'icon',
     page: 1,
     perPage: 20
-  })
+  }
+
+  if (route.query.query) {
+    params.searchTerm = String(route.query.query)
+  }
+
+  if (route.query.price) {
+    params.price = String(route.query.price)
+  }
+
+  await fetchDataIcons(params)
 
   if (dataIcons.value) {
-    itemsIcons.value = [...dataIcons.value.response.items.data]
+    itemsIcons.value = [...parseApiResponse(dataIcons.value)]
   }
 }
 
 const loadIllustrationsAssets = async () => {
-  await fetchDataIllustrations({
+  const params: IconscoutParams = {
     asset: 'illustration',
     page: 1,
     perPage: 15
-  })
+  }
+
+  if (route.query.query) {
+    params.searchTerm = String(route.query.query)
+  }
+
+  if (route.query.price) {
+    params.price = String(route.query.price)
+  }
+
+  await fetchDataIllustrations(params)
 
   if (dataIllustrations.value) {
-    itemsIllustrations.value = [...dataIllustrations.value.response.items.data]
+    itemsIllustrations.value = [...parseApiResponse(dataIllustrations.value)]
   }
 }
 
@@ -169,11 +218,15 @@ const checkIfItLastItem = (item: any, index: number, items: any[]) => {
   return null
 }
 
-onMounted(() => {
-  load3dAssets()
-  loadIconsAssets()
-  loadIllustrationsAssets()
-})
+watch(
+  () => route.query,
+  () => {
+    load3dAssets()
+    loadIconsAssets()
+    loadIllustrationsAssets()
+  },
+  { deep: true, immediate: true }
+)
 </script>
 
 <style lang="scss" scoped>

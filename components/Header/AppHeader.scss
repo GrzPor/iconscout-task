@@ -34,6 +34,7 @@
 
   &__search-dropdown {
     border-right: 1px solid #b4bad6;
+    display: flex;
 
     span {
       font-family: $font-averta-bold;
