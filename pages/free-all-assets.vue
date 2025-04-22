@@ -40,14 +40,15 @@
     <section class="my-4">
       <h2 class="mb-3 page-title">Icons</h2>
       <div v-if="loadingIcons && !dataIcons" class="tile-grid-icon">
-        <BaseIconTileSkeleton v-for="i in 15" :key="i" />
+        <BaseAssetTileSkeleton v-for="i in 15" :key="i" variant="icon" />
       </div>
       <div v-else-if="dataIcons" class="tile-grid-icon">
-        <BaseIconTile
+        <BaseAssetTile
           v-for="(item, index) in itemsIcons"
           :key="item.id"
           :url="item.urls.png_128"
           :name="item.name"
+          variant="icon"
           :redirect-url="checkIfItLastItem(item, index, itemsIcons)"
         />
       </div>
@@ -62,8 +63,6 @@ import { subMenu } from '~/data/mock-data'
 import AppHorizontalCategoryMenu from '@components/HorizontalCategoryMenu/AppHorizontalCategoryMenu.vue'
 import BaseAssetTile from '@components/base/BaseAssetTile/BaseAssetTile.vue'
 import BaseAssetTileSkeleton from '@components/base/BaseAssetTile/BaseAssetTileSkeleton/BaseAssetTileSkeleton.vue'
-import BaseIconTile from '@components/base/BaseIconTile/BaseIconTile.vue'
-import BaseIconTileSkeleton from '@components/base/BaseIconTile/BaseIconTileSkeleton/BaseIconTileSkeleton.vue'
 
 useHead({
   title: 'Free Design Assets - Browse Icons, Illustrations and 3D Graphics from Iconscout',

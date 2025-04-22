@@ -9,15 +9,16 @@
         aria-busy="true"
         aria-label="Loading icons"
       >
-        <BaseIconTileSkeleton v-for="i in perPage" :key="i" />
+        <BaseAssetTileSkeleton v-for="i in perPage" :key="i" variant="icon" />
       </div>
 
       <div v-else-if="data" class="tile-grid-icon" role="region" aria-label="Icon gallery">
-        <BaseIconTile
+        <BaseAssetTile
           v-for="icon in allItems"
           :key="icon.id"
           :url="icon.urls.png_128"
           :name="icon.name"
+          variant="icon"
         />
       </div>
 
@@ -38,8 +39,8 @@ import useInfiniteScroll from '~/composables/useInfiniteScroll'
 import { subMenu } from '~/data/mock-data'
 
 import AppHorizontalCategoryMenu from '@components/HorizontalCategoryMenu/AppHorizontalCategoryMenu.vue'
-import BaseIconTile from '~/components/base/BaseIconTile/BaseIconTile.vue'
-import BaseIconTileSkeleton from '~/components/base/BaseIconTile/BaseIconTileSkeleton/BaseIconTileSkeleton.vue'
+import BaseAssetTile from '~/components/base/BaseAssetTile/BaseAssetTile.vue'
+import BaseAssetTileSkeleton from '~/components/base/BaseAssetTile/BaseAssetTileSkeleton/BaseAssetTileSkeleton.vue'
 import AppSignupBlurBanner from '~/components/SignupBlurBanner/AppSignupBlurBanner.vue'
 
 useHead({

@@ -11,6 +11,7 @@
   min-width: 280px;
   position: relative;
   transition: background-color 0.2s ease-in-out;
+
   &:not(:has(.asset-tile__overlay)):hover {
     background-color: #e1e2e9;
 
@@ -87,5 +88,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+.asset-tile--icon {
+  border-radius: 6px;
+  min-height: 140px;
+  min-width: 140px;
+
+  .asset-tile__image {
+    height: 70px;
+    width: 70px;
   }
 }
