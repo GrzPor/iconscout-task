@@ -12,7 +12,7 @@ import type { Variant } from '~/types'
 
 const props = withDefaults(
   defineProps<{
-    variant: Variant
+    variant?: Variant
   }>(),
   {
     variant: 'asset'

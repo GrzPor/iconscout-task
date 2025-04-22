@@ -72,6 +72,7 @@ export default [
         reactive: 'readonly',
         onMounted: 'readonly',
         watch: 'readonly',
+        watchEffect: 'readonly',
         nextTick: 'readonly',
         onBeforeMount: 'readonly',
         onUnmounted: 'readonly',

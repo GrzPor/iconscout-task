@@ -7,6 +7,7 @@
       :value="value"
       :checked="checked"
       class="base-radio__input"
+      @change="handleChange"
     />
     <label :for="id" class="font-size-sm base-radio__label">
       <span>
@@ -17,6 +18,9 @@
 </template>
 
 <script setup lang="ts">
+type DOMEvent = globalThis.Event
+type DOMInputElement = globalThis.HTMLInputElement
+
 defineProps({
   id: {
     type: String,
@@ -40,6 +44,14 @@ defineProps({
     required: true
   }
 })
+
+const emit = defineEmits(['change'])
+
+function handleChange(event: DOMEvent): void {
+  if ((event.target as DOMInputElement).checked) {
+    emit('change')
+  }
+}
 </script>
 
 <style lang="scss" scoped>
