@@ -1,6 +1,6 @@
 <template>
   <div
-    class="app-sidebar"
+    class="app-sidebar d-none d-lg-block"
     :class="{ 'is-closed': isClosed }"
     role="complementary"
     aria-label="Filters"
