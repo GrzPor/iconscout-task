@@ -24,6 +24,7 @@ export interface IconscoutParams {
   page?: number
   perPage?: number
   searchTerm?: string
+  price?: string
 }
 
 export default function useIconscoutApi() {
@@ -44,15 +45,16 @@ export default function useIconscoutApi() {
       if (params.asset) queryParams.append('asset', params.asset)
       if (params.page) queryParams.append('page', params.page.toString())
       if (params.perPage) queryParams.append('perPage', params.perPage.toString())
-      if (params.searchTerm) queryParams.append('searchTerm', params.searchTerm)
+      if (params.searchTerm) queryParams.append('query', params.searchTerm)
+      if (params.price) queryParams.append('price', params.price)
+
+      const apiUrl = `/api/iconscout?${queryParams.toString()}`
 
       // Using Nuxt API for server routes
-      const response = await $fetch<IconscoutApiResponse>(
-        `/api/iconscout?${queryParams.toString()}`
-      )
+      const response = await $fetch<IconscoutApiResponse>(apiUrl)
+
       data.value = response
     } catch (err) {
-      console.error('Error fetching Iconscout data:', err)
       error.value = err instanceof Error ? err : new Error(String(err))
     } finally {
       loading.value = false

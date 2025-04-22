@@ -50,7 +50,7 @@
 <script setup lang="ts">
 import SidebarRadioSection from './SidebarRadioSection/SidebarRadioSection.vue'
 import AngleUpIcon from '@images/icons/angle-up.svg'
-import { subMenu } from '~/data/mock-data'
+import { subMenu } from '@data/mock-data'
 
 defineProps({
   isClosed: {
@@ -70,7 +70,7 @@ const selectedValues = ref({
   'sort-by': 'popular'
 })
 
-const routeToAssetMap = {
+const routeToAssetMap: Record<string, string> = {
   '/free-all-assets': 'all-assets',
   '/free-3d-illustrations': '3D-illustrations',
   '/free-lottie-animations': 'lottie-animations',
@@ -187,7 +187,7 @@ function toggleSection(index: number) {
 }
 
 function updateSelection(name: string, value: string) {
-  selectedValues.value[name] = value
+  selectedValues.value[name as keyof typeof selectedValues.value] = value
 
   if (name === 'asset') {
     const assetToRouteMap = {
@@ -196,11 +196,42 @@ function updateSelection(name: string, value: string) {
       'lottie-animations': '/free-lottie-animations',
       illustrations: '/free-illustrations',
       icons: '/free-icons'
+    } as const
+
+    type AssetKey = keyof typeof assetToRouteMap
+    const isValidAsset = (key: string): key is AssetKey => {
+      return key in assetToRouteMap
     }
 
-    if (value in assetToRouteMap) {
-      navigateTo(assetToRouteMap[value])
+    if (isValidAsset(value)) {
+      const currentQuery = route.query.query ? { query: route.query.query } : {}
+
+      navigateTo({
+        path: assetToRouteMap[value],
+        query: currentQuery
+      })
     }
+  } else if (name === 'price') {
+    let priceValue = null
+
+    if (value === 'free') {
+      priceValue = 'free'
+    } else if (value === 'premium') {
+      priceValue = 'premium'
+    }
+
+    const currentQuery = { ...route.query }
+
+    if (priceValue) {
+      currentQuery.price = priceValue
+    } else {
+      delete currentQuery.price
+    }
+
+    navigateTo({
+      path: route.path,
+      query: currentQuery
+    })
   }
 }
 </script>

@@ -8,7 +8,9 @@ export default defineNuxtConfig({
     '@components': '~/components',
     '@assets': '~/assets',
     '@images': '~/assets/images',
-    '@layouts': '~/layouts'
+    '@layouts': '~/layouts',
+    '@data': '~/data',
+    '@composables': '~/composables'
   },
   runtimeConfig: {
     public: {

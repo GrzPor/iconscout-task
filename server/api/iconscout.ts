@@ -8,22 +8,35 @@ export default defineEventHandler(async (event) => {
   const asset = query.asset || 'icon'
   const page = query.page || 1
   const perPage = query.perPage || 20
-  const searchTerm = query.searchTerm || ''
+  const searchTerm = query.query || ''
+  const price = query.price || ''
 
-  // Building request URL
-  let url = `https://api.iconscout.com/v3/search?asset=${asset}&page=${page}&per_page=${perPage}`
+  // Building request URL with all params at once for better readability
+  const params = new URLSearchParams()
+  params.append('asset', String(asset))
+  params.append('page', String(page))
+  params.append('per_page', String(perPage))
 
-  // Adding query params if exists
+  // Add search term if provided
   if (searchTerm) {
-    url += `&search=${encodeURIComponent(searchTerm)}`
+    params.append('query', String(searchTerm))
   }
+
+  // Add price filter if specified
+  if (price === 'free') {
+    params.append('price', 'free')
+  } else if (price === 'premium') {
+    params.append('price', 'premium')
+  }
+
+  const url = `https://api.iconscout.com/v3/search?${params.toString()}`
 
   try {
     // Executing request to API
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        'Client-ID': CLIENT_ID,
+        'Client-ID': CLIENT_ID || '',
         Accept: 'application/json'
       }
     })
@@ -31,12 +44,16 @@ export default defineEventHandler(async (event) => {
     // Checking if response is valid
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}))
-      throw new Error(`API error: ${response.status} ${JSON.stringify(errorData)}`)
+      console.error('Error response:', errorData)
+      throw new Error(`error: ${response.status} ${JSON.stringify(errorData)}`)
     }
 
-    // Returning data
-    return await response.json()
-  } catch (error) {
+    // Getting the response
+    const jsonData = await response.json()
+
+    // Return the data
+    return jsonData
+  } catch (error: any) {
     console.error('Error fetching data from Iconscout API:', error)
     return {
       success: false,
