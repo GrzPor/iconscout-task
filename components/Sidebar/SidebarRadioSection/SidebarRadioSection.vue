@@ -19,6 +19,8 @@
           :name="subitem.name"
           :value="subitem.value"
           :label="subitem.label"
+          :checked="isChecked(subitem.name, subitem.value)"
+          @change="onRadioChange(subitem.name, subitem.value)"
         />
       </fieldset>
     </BCollapse>
@@ -40,19 +42,33 @@ interface SidebarRadioSectionProps {
       label: string
     }[]
   }[]
+  selectedValues?: Record<string, string>
 }
 
-defineProps({
+const props = defineProps({
   items: {
     type: Array as () => SidebarRadioSectionProps['items'],
     required: true
+  },
+  selectedValues: {
+    type: Object as () => Record<string, string>,
+    default: () => ({})
   }
 })
 
-const emit = defineEmits(['toggle'])
+const emit = defineEmits(['toggle', 'update:selection'])
 
 function toggleSection(index: number) {
   emit('toggle', index)
+}
+
+function isChecked(name: string, value: string): boolean {
+  if (!props.selectedValues) return false
+  return props.selectedValues[name] === value
+}
+
+function onRadioChange(name: string, value: string) {
+  emit('update:selection', name, value)
 }
 </script>
 

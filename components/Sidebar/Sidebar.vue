@@ -19,7 +19,12 @@
         <label for="exclusiveIcons" aria-hidden="true"></label>
       </div>
     </div>
-    <SidebarRadioSection :items="radioSections" @toggle="toggleSection" />
+    <SidebarRadioSection
+      :items="radioSections"
+      :selected-values="selectedValues"
+      @toggle="toggleSection"
+      @update:selection="updateSelection"
+    />
     <div class="app-sidebar__wrapper px-4">
       <button
         @click="isCategoriesOpen = !isCategoriesOpen"
@@ -54,8 +59,31 @@ defineProps({
   }
 })
 
+const route = useRoute()
 const exclusiveIcons = ref(false)
 const isCategoriesOpen = ref(false)
+
+const selectedValues = ref({
+  asset: '',
+  view: 'individual',
+  price: 'free',
+  'sort-by': 'popular'
+})
+
+const routeToAssetMap = {
+  '/free-all-assets': 'all-assets',
+  '/free-3d-illustrations': '3D-illustrations',
+  '/free-lottie-animations': 'lottie-animations',
+  '/free-illustrations': 'illustrations',
+  '/free-icons': 'icons'
+}
+
+watchEffect(() => {
+  if (route.path in routeToAssetMap) {
+    selectedValues.value.asset = routeToAssetMap[route.path]
+  }
+})
+
 const radioSections = ref([
   {
     id: 'asset',
@@ -156,6 +184,24 @@ const categories = ref(subMenu)
 
 function toggleSection(index: number) {
   radioSections.value[index].isOpen = !radioSections.value[index].isOpen
+}
+
+function updateSelection(name: string, value: string) {
+  selectedValues.value[name] = value
+
+  if (name === 'asset') {
+    const assetToRouteMap = {
+      'all-assets': '/free-all-assets',
+      '3D-illustrations': '/free-3d-illustrations',
+      'lottie-animations': '/free-lottie-animations',
+      illustrations: '/free-illustrations',
+      icons: '/free-icons'
+    }
+
+    if (value in assetToRouteMap) {
+      navigateTo(assetToRouteMap[value])
+    }
+  }
 }
 </script>
 

@@ -31,7 +31,7 @@ const props = withDefaults(
   defineProps<{
     url: string
     name: string
-    variant: Variant
+    variant?: Variant
     redirectUrl?: string
   }>(),
   {
