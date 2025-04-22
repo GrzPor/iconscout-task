@@ -90,22 +90,26 @@ const setCategory = (categoryValue: string) => {
   }
 }
 
+const updateCategoryFromRoute = (path: string) => {
+  if (path.includes('/free-icons')) {
+    currentCategory.value = 'icon'
+  } else if (path.includes('/free-illustrations')) {
+    currentCategory.value = 'illustration'
+  } else if (path.includes('/free-3d-illustrations')) {
+    currentCategory.value = '3d'
+  } else if (path.includes('/free-animations')) {
+    currentCategory.value = 'animation'
+  } else if (path.includes('/free-all-assets')) {
+    currentCategory.value = 'all-assets'
+  }
+}
+
 onMounted(() => {
   if (route.query.query) {
     searchQuery.value = route.query.query as string
   }
 
-  if (route.path.includes('/free-icons')) {
-    currentCategory.value = 'icon'
-  } else if (route.path.includes('/free-illustrations')) {
-    currentCategory.value = 'illustration'
-  } else if (route.path.includes('/free-3d-illustrations')) {
-    currentCategory.value = '3d'
-  } else if (route.path.includes('/free-animations')) {
-    currentCategory.value = 'animation'
-  } else if (route.path.includes('/free-all-assets')) {
-    currentCategory.value = 'all-assets'
-  }
+  updateCategoryFromRoute(route.path)
 })
 
 watch(
@@ -114,6 +118,13 @@ watch(
     if (newQuery && newQuery !== searchQuery.value) {
       searchQuery.value = newQuery as string
     }
+  }
+)
+
+watch(
+  () => route.path,
+  (newPath) => {
+    updateCategoryFromRoute(newPath)
   }
 )
 
