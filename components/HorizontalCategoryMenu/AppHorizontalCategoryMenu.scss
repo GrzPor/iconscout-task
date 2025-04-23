@@ -1,4 +1,4 @@
-@import '~/assets/scss/_variables.scss';
+@use '~/assets/scss/variables' as *;
 
 .app-horizontal-category-menu-container {
   position: relative;
