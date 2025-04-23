@@ -13,7 +13,10 @@
       <span></span>
       <span></span>
     </div>
-    <a href="/" class="app-header__logo mb-5-5">
+    <div class="app-mobile-container" :class="{ 'is-open': isMenuOpen }">
+      <AppNav />
+    </div>
+    <a href="/" class="app-header__logo">
       <img src="/assets/images/brand/iconscout_logo_for_white_bg.svg" alt="IconScout" />
     </a>
     <div class="app-header__search" role="search">
@@ -49,31 +52,12 @@
         </button>
       </div>
     </div>
-    <nav class="w-100 app-header__nav" aria-label="Main navigation">
-      <ul class="list-unstyled mb-0 d-flex align-items-center">
-        <li
-          v-for="item in menuItems"
-          :key="item.name"
-          class="d-flex align-items-center me-3 me-xxl-4"
-        >
-          <a :href="item.url || '#'" :aria-label="item.carret ? `${item.name} menu` : undefined">
-            <component v-if="item.icon" :is="item.icon" :filled="true" aria-hidden="true" />
-            {{ item.name }}
-            <AngleDownIcon v-if="item.carret" aria-hidden="true" />
-          </a>
-        </li>
-        <li class="d-flex ms-auto me-3-4">
-          <BButton pill variant="outline-secondary">Login</BButton>
-        </li>
-        <li>
-          <BButton pill variant="primary">Sign up</BButton>
-        </li>
-      </ul>
-    </nav>
+    <AppNav class="app-header__nav" />
   </header>
 </template>
 
 <script setup lang="ts">
+import AppNav from './Nav/AppNav.vue'
 import GiftIcon from '@images/icons/gift.svg'
 import AngleDownIcon from '@images/icons/angle-down.svg'
 import SearchIcon from '@images/icons/search.svg'
