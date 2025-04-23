@@ -39,7 +39,9 @@ function toggleSidebar() {
   isClosed.value = !isClosed.value
 }
 
-const pageDefaults = {
+const pageDefaults: {
+  [key: string]: { title: string; description: string }
+} = {
   '/': {
     title: 'Iconscout - High Quality Digital Assets',
     description: 'Browse and download icons, illustrations, and 3D assets'
@@ -55,6 +57,10 @@ const pageDefaults = {
   '/free-3d-illustrations': {
     title: '237 Limit 3D Illustrations',
     description: '248 3Ds exclusively selected by our designer community.'
+  },
+  '/free-lottie-animations': {
+    title: '237 Amazing Free Lottie Animations',
+    description: '248 Lottie animations exclusively selected by our designer community.'
   },
   '/free-all-assets': {
     title: 'All Free Digital Assets',

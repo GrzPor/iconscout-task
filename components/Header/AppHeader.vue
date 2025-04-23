@@ -73,7 +73,8 @@ const categories = [
   { label: 'Icons', value: 'icon', path: '/free-icons' },
   { label: 'Illustrations', value: 'illustration', path: '/free-illustrations' },
   { label: '3D', value: '3d', path: '/free-3d-illustrations' },
-  { label: 'Animations', value: 'animation', path: '/free-animations' }
+  { label: 'Animations', value: 'animation', path: '/free-animations' },
+  { label: 'Lottie Animations', value: 'lottie', path: '/free-lottie-animations' }
 ]
 
 const getCategoryDisplayName = () => {
@@ -100,6 +101,8 @@ const updateCategoryFromRoute = (path: string) => {
     currentCategory.value = '3d'
   } else if (path.includes('/free-animations')) {
     currentCategory.value = 'animation'
+  } else if (path.includes('/free-lottie-animations')) {
+    currentCategory.value = 'lottie'
   } else if (path.includes('/free-all-assets')) {
     currentCategory.value = 'all-assets'
   }
