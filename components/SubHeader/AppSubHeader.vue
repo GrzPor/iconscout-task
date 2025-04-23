@@ -1,5 +1,5 @@
 <template>
-  <div class="app-subheader py-4" role="region" aria-labelledby="page-title">
+  <div class="app-subheader py-3 py-md-4" role="region" aria-labelledby="page-title">
     <h1 id="page-title">{{ title }}</h1>
     <p v-if="description">{{ description }}</p>
   </div>

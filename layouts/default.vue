@@ -78,6 +78,11 @@ const pageDescription = computed(() => {
   transition: width 0.3s ease;
   width: calc(100% - 260px);
 
+  @media screen and (max-width: 992px) {
+    width: 100%;
+    padding-inline: 16px;
+  }
+
   &.full-width {
     width: 100%;
   }

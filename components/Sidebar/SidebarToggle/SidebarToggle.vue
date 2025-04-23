@@ -1,6 +1,6 @@
 <template>
   <button
-    class="d-flex align-items-center px-4 py-3-4 button-zero"
+    class="d-none d-lg-flex align-items-center px-4 py-3-4 button-zero"
     @click="toggleSidebar"
     aria-label="Toggle filters sidebar"
     :aria-expanded="isToggled"

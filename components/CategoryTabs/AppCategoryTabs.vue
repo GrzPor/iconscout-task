@@ -1,5 +1,5 @@
 <template>
-  <nav aria-label="Asset categories" class="d-flex align-items-end category-tabs">
+  <nav aria-label="Asset categories" class="d-none d-lg-flex align-items-end category-tabs">
     <ul role="tablist" class="list-unstyled mb-0 d-flex align-items-end gap-4">
       <li v-for="(tab, index) in tabs" :key="index" class="font-size-sm" role="presentation">
         <NuxtLink :to="tab.path" role="tab" :aria-selected="isActive(tab.path)">

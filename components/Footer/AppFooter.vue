@@ -1,7 +1,7 @@
 <template>
   <footer class="app-footer" role="contentinfo">
-    <div class="container">
-      <div class="d-flex py-4 flex-wrap justify-content-between">
+    <div class="confainer-fluid container-lg">
+      <div class="d-flex py-4 flex-column flex-md-row justify-content-between">
         <div class="d-flex flex-col flex-sm-row flex-wrap align-items-center">
           <img
             src="/assets/images/brand/iconscout_logo_for_white_bg.svg"
@@ -10,26 +10,27 @@
           />
           <span class="font-size-sm">Design Resource Marketplace</span>
         </div>
-        <span class="d-flex align-items-center font-size-sm">
+        <span class="d-flex align-items-center font-size-sm mt-3 mt-md-0">
           <em class="app-footer__count mr-1">10,995,459</em>
           &nbsp;graphic resources & counting
         </span>
       </div>
       <hr class="m-0" />
+      <!-- row-cols-2 row-cols-lg-5 -->
       <div class="row py-4">
-        <div class="col">
+        <div class="col-6 col-lg">
           <BaseNavList title="Graphic Resources" :items="graphicResourcesLinks" />
         </div>
-        <div class="col">
+        <div class="col-6 col-lg">
           <BaseNavList title="Products" :items="productsLinks" />
         </div>
-        <div class="col">
+        <div class="col-6 col-lg">
           <BaseNavList title="Company" :items="companyLinks" />
         </div>
-        <div class="col">
+        <div class="col-6 col-lg">
           <BaseNavList title="Legal" :items="legalLinks" />
         </div>
-        <div class="col">
+        <div class="col-6 col-lg">
           <div>
             <BaseSocialList title="Get IconScout for desktop" :items="desktopApps" />
           </div>
@@ -62,8 +63,8 @@
       </div>
     </div>
     <div class="app-copyright py-4 font-size-sm">
-      <div class="container">
-        <div class="d-flex justify-content-between">
+      <div class="container-fluid container-lg">
+        <div class="d-flex flex-column flex-md-row justify-content-between">
           <div class="d-inline-flex align-items-center app-copyright__content">
             <span>&copy; {{ new Date().getFullYear() }} Design Barn Inc. Made with</span>
             <HeartIcon class="mx-1" aria-hidden="true" />

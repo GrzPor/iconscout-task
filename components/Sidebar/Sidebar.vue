@@ -1,6 +1,6 @@
 <template>
   <div
-    class="app-sidebar"
+    class="app-sidebar d-none d-lg-block"
     :class="{ 'is-closed': isClosed }"
     role="complementary"
     aria-label="Filters"
@@ -25,7 +25,7 @@
       @toggle="toggleSection"
       @update:selection="updateSelection"
     />
-    <div class="app-sidebar__wrapper px-4">
+    <div class="px-4 app-sidebar__wrapper app-sidebar__wrapper--border-bottom">
       <button
         @click="isCategoriesOpen = !isCategoriesOpen"
         aria-controls="collapse-categories"
