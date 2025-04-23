@@ -1,5 +1,18 @@
 <template>
-  <header class="container-fluid d-flex align-items-center py-3-4 px-4 app-header" role="banner">
+  <header
+    class="container-fluid d-flex flex-wrap flex-md-nowrap align-items-center py-3-4 px-3 px-lg-4 app-header"
+    role="banner"
+  >
+    <div
+      class="app-mobile-menu"
+      :class="{ 'is-open': isMenuOpen }"
+      @click="toggleMenu"
+      aria-label="Toggle menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <a href="/" class="app-header__logo mb-5-5">
       <img src="/assets/images/brand/iconscout_logo_for_white_bg.svg" alt="IconScout" />
     </a>
@@ -38,7 +51,11 @@
     </div>
     <nav class="w-100 app-header__nav" aria-label="Main navigation">
       <ul class="list-unstyled mb-0 d-flex align-items-center">
-        <li v-for="item in menuItems" :key="item.name" class="d-flex align-items-center me-4">
+        <li
+          v-for="item in menuItems"
+          :key="item.name"
+          class="d-flex align-items-center me-3 me-xxl-4"
+        >
           <a :href="item.url || '#'" :aria-label="item.carret ? `${item.name} menu` : undefined">
             <component v-if="item.icon" :is="item.icon" :filled="true" aria-hidden="true" />
             {{ item.name }}
@@ -66,6 +83,7 @@ const route = useRoute()
 const router = useRouter()
 const searchQuery = ref('')
 const currentCategory = ref('icon')
+const isMenuOpen = ref(false)
 
 const categories = [
   { label: 'All assets', value: 'all-assets', path: '/free-all-assets' },
@@ -150,6 +168,10 @@ const menuItems = [
   { name: 'Free Asset', carret: false, icon: GiftIcon },
   { name: 'Learn', carret: true }
 ]
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
 </script>
 
 <style lang="scss" scoped>

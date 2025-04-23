@@ -30,6 +30,16 @@
     &:has(.app-header__search-input:focus-visible) {
       border: 1px solid $primary;
     }
+
+    @media screen and (max-width: 1300px) {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      margin-top: 16px;
+    }
   }
 
   &__search-dropdown {
@@ -69,6 +79,66 @@
     a {
       color: $navy-200;
       text-decoration: none;
+    }
+
+    @media screen and (max-width: 1300px) {
+      display: none;
+    }
+  }
+}
+
+.app-mobile-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #b4bad6;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 16px;
+  position: relative;
+  transition: all 0.3s ease;
+
+  @media screen and (min-width: 1300px) {
+    display: none;
+  }
+
+  span {
+    display: block;
+    position: absolute;
+    width: 18px;
+    height: 2px;
+    background-color: #b4bad6;
+    transition: all 0.25s ease-in-out;
+
+    &:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    &:nth-child(2) {
+      transform: translateY(0);
+    }
+
+    &:nth-child(3) {
+      transform: translateY(6px);
+    }
+  }
+
+  &.is-open {
+    span {
+      &:nth-child(1) {
+        transform: translateY(0) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      &:nth-child(3) {
+        transform: translateY(0) rotate(-45deg);
+      }
     }
   }
 }
