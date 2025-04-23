@@ -58,7 +58,6 @@
 
 <script setup lang="ts">
 import AppNav from './Nav/AppNav.vue'
-import GiftIcon from '@images/icons/gift.svg'
 import AngleDownIcon from '@images/icons/angle-down.svg'
 import SearchIcon from '@images/icons/search.svg'
 import ImageSearchIcon from '@images/icons/image-search.svg'
@@ -144,14 +143,6 @@ const handleSearch = () => {
     }
   })
 }
-
-const menuItems = [
-  { name: 'Explore', carret: true },
-  { name: 'Tools', carret: true },
-  { name: 'All Features', carret: false, url: 'https://iconscout.com/freebies' },
-  { name: 'Free Asset', carret: false, icon: GiftIcon },
-  { name: 'Learn', carret: true }
-]
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
