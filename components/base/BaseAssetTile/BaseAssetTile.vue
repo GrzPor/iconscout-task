@@ -7,7 +7,8 @@
       </p>
     </div>
     <a :href="redirectUrl || '#'" class="asset-tile__link">
-      <img :src="url" :alt="name" class="asset-tile__image" />
+      <video v-if="isVideo" :src="url" autoplay muted loop class="asset-tile__image" />
+      <img v-else :src="url" :alt="name" class="asset-tile__image" />
       <p v-if="!isIconVariant" class="font-size-xs mb-0 asset-tile__name">{{ name }}</p>
       <div class="asset-tile__buttons" role="group" aria-label="Asset actions">
         <button class="asset-tile__button" aria-label="Add to collection" title="Add to collection">
@@ -33,6 +34,7 @@ const props = withDefaults(
     name: string
     variant?: Variant
     redirectUrl?: string
+    isVideo?: boolean
   }>(),
   {
     variant: 'asset'
