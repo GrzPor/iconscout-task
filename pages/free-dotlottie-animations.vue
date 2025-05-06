@@ -87,24 +87,6 @@ const { isLoading } = useInfiniteScroll(loadNextPage, {
   showBanner: false
 })
 
-const parseApiResponse = (apiData: any): any[] => {
-  if (!apiData) {
-    return []
-  }
-
-  if (Array.isArray(apiData.data)) {
-    return apiData.data
-  } else if (apiData.response?.items?.data && Array.isArray(apiData.response.items.data)) {
-    return apiData.response.items.data
-  } else if (apiData.items?.data && Array.isArray(apiData.items.data)) {
-    return apiData.items.data
-  } else if (apiData.items && Array.isArray(apiData.items)) {
-    return apiData.items
-  }
-
-  return []
-}
-
 const loadPage = async (pageNum: number) => {
   const searchTerm = route.query.query || ''
   const priceFilter = route.query.price || undefined
@@ -117,13 +99,13 @@ const loadPage = async (pageNum: number) => {
     price: priceFilter as string
   })
 
-  if (data.value) {
-    const parsedData = parseApiResponse(data.value)
+  const res = data.value.response.items.data
 
+  if (res && Array.isArray(res)) {
     if (pageNum === 1) {
-      allItems.value = [...parsedData]
+      allItems.value = [...res]
     } else {
-      allItems.value = [...allItems.value, ...parsedData]
+      allItems.value = [...allItems.value, ...res]
     }
   }
 }
