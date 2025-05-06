@@ -117,22 +117,11 @@ const {
 } = useIconscoutApi()
 const itemsIllustrations = ref<any[]>([])
 
-const parseApiResponse = (apiData: any): any[] => {
-  if (!apiData) {
-    return []
-  }
-
-  if (Array.isArray(apiData.data)) {
-    return apiData.data
-  } else if (apiData.response?.items?.data && Array.isArray(apiData.response.items.data)) {
-    return apiData.response.items.data
-  } else if (apiData.items?.data && Array.isArray(apiData.items.data)) {
-    return apiData.items.data
-  } else if (apiData.items && Array.isArray(apiData.items)) {
-    return apiData.items
-  }
-
-  return []
+function getQueryString(val: unknown): string | undefined {
+  if (Array.isArray(val)) return val[0] ?? undefined
+  if (typeof val === 'string') return val
+  if (val === null) return undefined
+  return undefined
 }
 
 const load3dAssets = async () => {
@@ -142,18 +131,15 @@ const load3dAssets = async () => {
     perPage: 15
   }
 
-  if (route.query.query) {
-    params.searchTerm = String(route.query.query)
-  }
-
-  if (route.query.price) {
-    params.price = String(route.query.price)
-  }
+  params.searchTerm = getQueryString(route.query.query)
+  params.price = getQueryString(route.query.price)
 
   await fetchData3d(params)
 
-  if (data3d.value) {
-    items3d.value = [...parseApiResponse(data3d.value)]
+  const res = data3d.value.response.items.data
+
+  if (res && Array.isArray(res)) {
+    items3d.value = [...res]
   }
 }
 
@@ -164,18 +150,15 @@ const loadIconsAssets = async () => {
     perPage: 20
   }
 
-  if (route.query.query) {
-    params.searchTerm = String(route.query.query)
-  }
-
-  if (route.query.price) {
-    params.price = String(route.query.price)
-  }
+  params.searchTerm = getQueryString(route.query.query)
+  params.price = getQueryString(route.query.price)
 
   await fetchDataIcons(params)
 
-  if (dataIcons.value) {
-    itemsIcons.value = [...parseApiResponse(dataIcons.value)]
+  const res = dataIcons.value.response.items.data
+
+  if (res && Array.isArray(res)) {
+    itemsIcons.value = [...res]
   }
 }
 
@@ -186,18 +169,15 @@ const loadIllustrationsAssets = async () => {
     perPage: 15
   }
 
-  if (route.query.query) {
-    params.searchTerm = String(route.query.query)
-  }
-
-  if (route.query.price) {
-    params.price = String(route.query.price)
-  }
+  params.searchTerm = getQueryString(route.query.query)
+  params.price = getQueryString(route.query.price)
 
   await fetchDataIllustrations(params)
 
-  if (dataIllustrations.value) {
-    itemsIllustrations.value = [...parseApiResponse(dataIllustrations.value)]
+  const res = dataIllustrations.value.response.items.data
+
+  if (res && Array.isArray(res)) {
+    itemsIllustrations.value = [...res]
   }
 }
 
@@ -211,11 +191,11 @@ const checkIfItLastItem = (item: any, index: number, items: any[]) => {
       case 'illustration':
         return '/free-illustrations'
       default:
-        return null
+        return undefined
     }
   }
 
-  return null
+  return undefined
 }
 
 watch(

@@ -29,6 +29,7 @@ const categories = [
   { path: '/free-all-assets', name: 'All Assets' },
   { path: '/free-3d-illustrations', name: '3D Illustrations' },
   { path: '/free-lottie-animations', name: 'Lottie Animations' },
+  { path: '/free-dotlottie-animations', name: 'DotLottie Animations' },
   { path: '/free-illustrations', name: 'Illustrations' },
   { path: '/free-icons', name: 'Icons' }
 ]
@@ -61,6 +62,10 @@ const pageDefaults: {
   '/free-lottie-animations': {
     title: '237 Amazing Free Lottie Animations',
     description: '248 Lottie animations exclusively selected by our designer community.'
+  },
+  '/free-dotlottie-animations': {
+    title: '237 Amazing Free DotLottie Animations',
+    description: '248 DotLottie animations exclusively selected by our designer community.'
   },
   '/free-all-assets': {
     title: 'All Free Digital Assets',
