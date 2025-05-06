@@ -6,4 +6,11 @@ export default defineNuxtRouteMiddleware((to: RouteLocationNormalized) => {
   if (to.path === '/') {
     return navigateTo('/free-icons')
   }
+  // Add price=free if it's not in the query
+  if (!to.query.price) {
+    return navigateTo({
+      path: to.path,
+      query: { ...to.query, price: 'free' }
+    })
+  }
 })

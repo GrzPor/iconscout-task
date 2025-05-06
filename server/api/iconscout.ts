@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
     params.append('price', 'premium')
   }
 
-  const url = `https://api.iconscout.com/v3/search?${params.toString()}`
+  const url = `https://api.iconscout.com/v2/search?${params.toString()}`
 
   try {
     // Executing request to API

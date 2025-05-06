@@ -1,24 +1,23 @@
-# What I didn't do:
+# Compare between [Lottie player](https://www.npmjs.com/package/@lottiefiles/lottie-player) and [Dotlottie player](https://www.npmjs.com/package/@dotlottie/player-component).
 
-### Didn't use Lottie player and Dotlottie player for Lottie Animations tab, why ?
+Because we can see on NPM page that Dotlottie player it's deprecated and superceded by @lottiefiles/dotlottie-wc, I used for
+Dotlottie page this web component plugin.
 
-Because endpoint returns only a .mp4 file, when the library wants lottie or json file.
-[endpoint without lottie or json data](readme/no-json-and-no-lottie.png)
+`const LP = @lottiefiles/lottie-player`
 
-### Didn't compare both of them and write brief conclusion which one is best choice and why.
+`const DLP = @lottiefiles/dotlottie-wc`
 
-I didn't do it because I didn't initialize aboved library so there was no possibility to compate them (Dotlottie it's deprecated so best choice goes to Lottie player).
+## DLP it's better than LP, why ?
 
-### Figma file with page design doesn't have all scenarios for dropdowns, menus etc.
+1. It handles .lottie files which are smaller, so they're faster for loading on page,
+2. It handle a few animations from one file,
+3. It is newer and has more frequent updates,
+4. Animations are smoother,
+5. Both libraries have similar API (autoplay, loop, src, etc),
+6. Both libraries have multi-platform support.
 
-I did a few things just for functionality and few I just didn't touch.
-[figma1](readme/figma1.png)
-[figma2](readme/figma2.png)
-
-# What I did why my problems ?
-
-**I sent a email with images and questions to our contact person and I know that my email was forwarded to
-peoples from Lottie, but I didn't receive any response.**
+DLP is a more complex and advanced solution.
+It is a great tool when you have a lot of animations and you care about page speed.
 
 # Nuxt Minimal Starter
 

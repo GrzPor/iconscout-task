@@ -45,5 +45,10 @@ export default defineNuxtConfig({
         }
       ]
     }
+  },
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag === 'lottie-player' || tag === 'dotlottie-wc'
+    }
   }
 })

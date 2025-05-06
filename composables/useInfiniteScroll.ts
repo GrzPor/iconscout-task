@@ -2,12 +2,13 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 export default function useInfiniteScroll(
   callback: () => void,
-  options = { threshold: 200, bannerDelay: 800 }
+  options = { threshold: 200, bannerDelay: 800, maxLoads: 2, showBanner: true }
 ) {
   const isLoading = ref(false)
   const showSignupBanner = ref(false)
-  const maxLoads = ref(2) // Maximum number of additional loads
+  const maxLoads = ref(options.maxLoads ?? 2)
   const currentLoads = ref(0)
+  const showBanner = options.showBanner !== undefined ? options.showBanner : true
 
   const handleScroll = () => {
     if (isLoading.value || showSignupBanner.value) return
@@ -18,7 +19,7 @@ export default function useInfiniteScroll(
 
       if (
         scrollPosition >= documentHeight - options.threshold &&
-        currentLoads.value < maxLoads.value
+        (maxLoads.value === Infinity || currentLoads.value < maxLoads.value)
       ) {
         isLoading.value = true
         currentLoads.value++
@@ -27,7 +28,7 @@ export default function useInfiniteScroll(
         callback()
 
         // After maxLoads, show signup banner with a delay
-        if (currentLoads.value >= maxLoads.value) {
+        if (showBanner && maxLoads.value !== Infinity && currentLoads.value >= maxLoads.value) {
           // Reset loading state first
           setTimeout(() => {
             isLoading.value = false

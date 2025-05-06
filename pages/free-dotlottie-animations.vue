@@ -7,14 +7,13 @@
         <BaseAssetTileSkeleton v-for="i in perPage" :key="i" />
       </div>
       <div v-else-if="data" class="tile-grid-asset">
-        <lottie-player
+        <dotlottie-wc
           v-for="item in allItems"
           class="lottie-player"
-          autoplay
-          loop
-          mode="normal"
-          :src="item.urls.original"
-        ></lottie-player>
+          autoplay="true"
+          loop="true"
+          :src="item.urls.lottie"
+        />
       </div>
 
       <div v-if="isLoading" class="d-flex justify-content-center my-3">
